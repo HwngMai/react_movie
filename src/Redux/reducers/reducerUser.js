@@ -5,7 +5,7 @@ const initialState = {
   // gọi user ở localStorage từ localServ
   userInfor: localServ.user.getItem(),
 };
-
+  
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:

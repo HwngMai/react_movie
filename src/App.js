@@ -5,9 +5,12 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import "antd/dist/antd.min.css";
 import DetailMovie from "./Pages/HomePage/DetailMovie";
 import Layout from "./Layout/Layout";
+import Spinner from "./Components/Spinner/Spinner";
+
 function App() {
   return (
     <div>
+      <Spinner />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout Component={HomePage} />} />
