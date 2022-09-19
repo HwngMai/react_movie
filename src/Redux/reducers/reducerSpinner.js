@@ -1,7 +1,7 @@
 import { SET_LOADING_OFF, SET_LOADING_ON } from "../constants/constantSpinner";
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
 };
 
 export const spinnerReducer = (state = initialState, { type, payload }) => {

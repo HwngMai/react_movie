@@ -6,7 +6,7 @@ export default function Spinner() {
   let { isLoading } = useSelector((state) => state.spinnerReducer);
   // Kiểm tra isLoading render nếu == true
   return isLoading ? (
-    <div className='h-screen w-screen fixed left-0 top-0 bg-rose-300 flex justify-center bg-opacity-50 items-center z-50'>
+    <div className='h-screen w-screen fixed left-0 top-0 bg-rose-900 flex justify-center bg-opacity-70 items-center z-50'>
       <FadeLoader radius='4' speedMultiplier='0.5' color='#E71D36' />
     </div>
   ) : (

@@ -8,6 +8,7 @@ import {
   setLoadingOnAction,
   setLoadingOffAction,
 } from "../../Redux/actions/actionSpinner";
+import Carousel from "../../Components/Carousel/Carousel";
 export default function HomePage() {
   // Tạo useState movies
   const [movies, setMovies] = useState([]);
@@ -15,7 +16,7 @@ export default function HomePage() {
   const dispatch = useDispatch();
   // Gọi api
   useEffect(() => {
-    // dispatch isLoading = on
+    // dispatch set isLoading = on
     dispatch(setLoadingOnAction());
     // setState isLoading
     // Gọi api danh sách phim từ moviesServ
@@ -26,13 +27,13 @@ export default function HomePage() {
         console.log("data list movie: ", res);
         // setState cho movieList bằng data gọi về từ api
         setMovies(res.data.content);
-        // dispatch isLoading = off
+        // dispatch set isLoading = off
         dispatch(setLoadingOffAction());
       })
       .catch((err) => {
         // setState isLoading
         console.log(err);
-        // dispatch isLoading = off
+        // dispatch set isLoading = off
         dispatch(setLoadingOffAction());
       });
   }, []);
@@ -43,12 +44,20 @@ export default function HomePage() {
     });
   };
   return (
-    <div className='container mx-auto'>
-      <div className='grid grid-cols-5 gap-4' id='lichChieu'>
+    <div className='container mx-auto font-link'>
+      <div>
+        <Carousel />
+      </div>
+      <p className='text-center text-xl font-link underline'> LỊCH CHIẾU</p>
+      <div className='grid grid-cols-5 gap-4 font-link' id='lichChieu'>
         {renderMoviesCard()}
       </div>
-      <div className='my-10' id='cumRap'>
-        <p className='text-center text-xl'> THÔNG TIN RẠP VÀ PHIM ĐANG CHIẾU</p>
+
+      <div className='my-10 font-link' id='cumRap'>
+        <p className='text-center text-xl font-link underline'>
+          {" "}
+          THÔNG TIN RẠP VÀ PHIM ĐANG CHIẾU
+        </p>
         <TabsMovie />
       </div>
     </div>

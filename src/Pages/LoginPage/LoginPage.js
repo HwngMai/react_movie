@@ -1,12 +1,10 @@
 import React from "react";
 import { Button, message, Checkbox, Form, Input } from "antd";
-import { userServ } from "../../Services/userServies";
-import { localServ } from "../../Services/localServices";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { SET_USER } from "../../Redux/constants/constantUser";
 import bg_animate from "../../Assets/bg_animate.json";
 import Lottie from "lottie-react";
+import { setUserLoginActionServ } from "../../Redux/actions/actionUsers";
 
 export default function LoginPage() {
   // chuyển hướng trang bằng useNavigate từ react-router
@@ -15,30 +13,20 @@ export default function LoginPage() {
   let dispatch = useDispatch();
   const onFinish = (values) => {
     console.log("Success:", values);
-    // gọi hàm login từ userServ
-    // truyền values chứa taiKhoan và matKhau vào param (dataLogin)
-    userServ
-      .postLogin(values)
-      .then((res) => {
-        console.log(res);
-        // hiện thị message
-        message.success("Đăng nhập thành công");
-        // lưu vào USER storage
-        localServ.user.setItem(res.data.content);
-        // chuyển hướng sang trang chủ sau 1s
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-        // dispatch lên store
-        dispatch({
-          type: SET_USER,
-          payload: res.data.content,
-        });
-      })
-      .catch((err) => {
-        message.error("Đăng nhập thất bại");
-        console.log(err);
-      });
+    // tạo 2 func callBack: onSuccess, onFail cho setUserLoginActionServ
+    let onSuccess = () => {
+      // hiện thị message
+      message.success("Đăng nhập thành công");
+      // chuyển hướng sang trang chủ sau 1s
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    };
+    let onFail = () => {
+      message.error("Đăng nhập thất bại");
+    };
+    // dispatch value kèm 2 callback func lên action
+    dispatch(setUserLoginActionServ(values, onSuccess, onFail));
   };
 
   const onFinishFailed = (errorInfo) => {

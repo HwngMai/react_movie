@@ -14,5 +14,9 @@ export const moviesServ = {
     //truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },
+  getListMovieCarousel: () => {
+    let uri = "api/QuanLyPhim/LayDanhSachBanner";
+    //truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
+    return https.get(uri);
+  },
 };
-
