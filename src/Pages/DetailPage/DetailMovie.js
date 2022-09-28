@@ -1,9 +1,7 @@
 import React from "react";
 
 const DetailMovie = () => {
-  // lấy id
-
-  return <div className='container'>Detail movie</div>;
+  return <div className='container bg-red-200'>Detail movie</div>;
 };
 
 export default DetailMovie;

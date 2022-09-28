@@ -15,8 +15,8 @@ export default function UserNav() {
     localServ.user.remove();
     // remove data từ redux
     // dispatch({
-      // type: SET_USER,
-      // payload: null
+    // type: SET_USER,
+    // payload: null
     // })
     // chuyển trang đến trang login
     window.location.href = "/login";
@@ -43,7 +43,7 @@ export default function UserNav() {
         <>
           <div className='space-x-5 mx-5'>
             <NavLink to='/login'>
-              <button className='border rounded transition hover:border-red-800 hover:bg-white border-black text-black px-5 py-2 hover:text-red-400'>
+              <button className='border rounded transition bg-red-500 hover:border-red-800 hover:bg-white border-white shadow-lg text-black px-5 py-2 hover:text-red-500'>
                 {" "}
                 Đăng nhập
               </button>

@@ -8,7 +8,7 @@ export default function Layout({ Component }) {
       <div className='fixed top-0 left-0 w-full z-10'>
         <Header />
       </div>
-      <div className='pt-16 -z-10 w-full'>
+      <div className='pt-20 -z-10 w-full'>
         <Component />
       </div>
     </div>

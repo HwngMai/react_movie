@@ -11,7 +11,7 @@ export default function ItemTabsMovie({ data }) {
             return (
               <div
                 key={index}
-                className='p-3 rounded bg-red-300 text-black hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
+                className='p-3 rounded bg-red-300 text-black hover:text-white hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
                 {moment(gioChieu.ngayChieuGioChieu).format(
                   "DD-MM-YYYY ~ hh:MM"
                 )}
@@ -19,7 +19,7 @@ export default function ItemTabsMovie({ data }) {
             );
           })}
         </div>
-      </div>  
+      </div>
     </div>
   );
 }
