@@ -2,15 +2,15 @@
 import { userServ } from "../../Services/userServies";
 import { SET_USER } from "../constants/constantUser";
 import { localServ } from "../../Services/localServices";
-// tạo biến setUserLoginSuccess chứa dữ liệu dispatch
+// tạo hàm setUserLoginSuccess chứa dữ liệu dispatch
 const setUserLoginSuccess = (successValue) => {
   return {
     type: SET_USER,
     payload: successValue,
   };
 };
-// action có api *__Serv
-// truyền 2 callback onLoginSuccess, onLoginFail xử lí thêm râu ria
+// tạo hàm xử lí action có api *__Serv
+// truyền 2 callback onLoginSuccess, onLoginFail xử lí thêm các trường hợp phía sau
 export const setUserLoginActionServ = (
   dataLogin,
   onLoginSuccess,

@@ -2,18 +2,19 @@ import React from "react";
 import { Link } from "react-scroll";
 import UserNav from "./UserNav";
 import { VscRocket } from "react-icons/vsc";
+import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
-    <div className='shadow font-link '>
+    <div className='shadow-xl font-link '>
       <div className='h-20 flex justify-between mx-auto items-center bg-red-300 px-4'>
-        <Link to='/'>
+        <NavLink to='/'>
           <span className='text-3xl animate-pulse text-black inline-block'>
             {" "}
             <VscRocket /> CYBERFLIX
           </span>
-        </Link>
+        </NavLink>
         <div className='flex gap-5'>
-          <Link to='lichChieu' smooth={true}>
+          <Link to='lichChieu' offset={-80} smooth={true}>
             <span className='text-base underline text-red-500 hover:text-black transition duration-300'>
               LỊCH CHIẾU
             </span>

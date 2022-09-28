@@ -16,9 +16,10 @@ function App() {
           <Route path='/' element={<Layout Component={HomePage} />} />
           <Route
             path='/detail/:id'
+            id={123}
             element={<Layout Component={DetailMovie} />}
           />
-          <Route path='/login' element={<LoginPage />} />
+          <Route path='/login' element={<Layout Component={LoginPage} />} />
         </Routes>
       </BrowserRouter>
     </div>

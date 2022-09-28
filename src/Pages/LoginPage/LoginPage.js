@@ -2,7 +2,7 @@ import React from "react";
 import { Button, message, Checkbox, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import bg_animate from "../../Assets/bg_animate.json";
+import bg_animate2 from "../../Assets/bg_animate2.json";
 import Lottie from "lottie-react";
 import { setUserLoginActionServ } from "../../Redux/actions/actionUsers";
 
@@ -25,7 +25,7 @@ export default function LoginPage() {
     let onFail = () => {
       message.error("Đăng nhập thất bại");
     };
-    // dispatch value kèm 2 callback func lên action
+    // dispatch value sử dụng action từ actionUser kèm 2 callback func lên action
     dispatch(setUserLoginActionServ(values, onSuccess, onFail));
   };
 
@@ -34,11 +34,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className='container mx-auto h-screen w-screen flex items-center justify-center'>
-      <div className='w-1/3 h-full'>
-        <Lottie animationData={bg_animate}></Lottie>
-      </div>
+    <div className='container mx-auto flex items-center justify-center'>
       <div className='w-1/2 h-full'>
+        <Lottie animationData={bg_animate2}></Lottie>
+      </div>
+      <div className='w-1/3 h-full'>
         <Form
           className='w-full '
           layout='vertical'
@@ -82,11 +82,11 @@ export default function LoginPage() {
           </Form.Item>
           <Form.Item
             wrapperCol={{
-              offset: 11,
+              offset: 9,
               span: 24,
             }}>
-            <Button type='primary' htmlType='submit'>
-              Submit
+            <Button type='danger' htmlType='submit'>
+              Đăng nhập
             </Button>
           </Form.Item>
         </Form>

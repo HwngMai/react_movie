@@ -55,7 +55,7 @@ export default function Carousel() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
   };
   return (
     <div className='my-5 w-4/5 mx-auto'>

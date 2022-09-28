@@ -41,7 +41,7 @@ export default function UserNav() {
     } else {
       return (
         <>
-          <div className='space-x-5'>
+          <div className='space-x-5 mx-5'>
             <NavLink to='/login'>
               <button className='border rounded transition hover:border-red-800 hover:bg-white border-black text-black px-5 py-2 hover:text-red-400'>
                 {" "}

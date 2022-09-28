@@ -2,7 +2,7 @@ import { localServ } from "../../Services/localServices";
 import { SET_USER } from "../constants/constantUser";
 
 const initialState = {
-  // gọi user ở localStorage từ localServ
+  // lấy thông tin user ở localStorage từ localServ
   userInfor: localServ.user.getItem(),
 };
   

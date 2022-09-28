@@ -25,7 +25,7 @@ export default function ItemMovie({ data }) {
         />
         {/* tạo đường dẫn cho button bằng thẻ NavLink */}
         <NavLink to={`/detail/${data.maPhim}`}>
-          <button className='w-full my-1 py-2 text-center bg-red-300 text-white hover:bg-red-600 transition-all duration-500'>
+          <button className='w-full my-1 py-2 text-center bg-red-300 text-black hover:bg-red-600 transition-all duration-500'>
             Xem chi tiết
           </button>
         </NavLink>

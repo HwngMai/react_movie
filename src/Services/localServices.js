@@ -1,4 +1,4 @@
-// Service lưu dữ liệu USER vào local storage
+// Obj gồm các cách lưu dữ liệu USER vào local storage
 // tạo biến USER 
 const USER = "USER";
 // tạo biến obj localServ chứa các thao tác xử lí

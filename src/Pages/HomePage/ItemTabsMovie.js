@@ -7,9 +7,11 @@ export default function ItemTabsMovie({ data }) {
       <div>
         <p className='text-lg'>{data.tenPhim}</p>
         <div className='grid grid-cols-3 gap-5 '>
-          {data.lstLichChieuTheoPhim.slice(0, 9).map((gioChieu) => {
+          {data.lstLichChieuTheoPhim.slice(0, 9).map((gioChieu, index) => {
             return (
-              <div className='p-3 rounded bg-red-300 text-white hover:text-black transtion duration-300 cursor-pointer'>
+              <div
+                key={index}
+                className='p-3 rounded bg-red-300 text-black hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
                 {moment(gioChieu.ngayChieuGioChieu).format(
                   "DD-MM-YYYY ~ hh:MM"
                 )}
@@ -17,7 +19,7 @@ export default function ItemTabsMovie({ data }) {
             );
           })}
         </div>
-      </div>
+      </div>  
     </div>
   );
 }

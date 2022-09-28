@@ -38,8 +38,8 @@ export default function TabsMovies() {
                   <div
                     className='border scrollbar-thin scrollbar-thumb-red-700 scrollbar-track-red-200 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full'
                     style={{ height: 500, overflowY: "scroll" }}>
-                    {cumRap.danhSachPhim.map((phim) => {
-                      return <ItemTabsMovie data={phim} />;
+                    {cumRap.danhSachPhim.map((phim, index) => {
+                      return <ItemTabsMovie data={phim} key={index} />;
                     })}
                   </div>
                 </Tabs.TabPane>

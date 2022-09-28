@@ -7,7 +7,7 @@ export default function Spinner() {
   // Kiểm tra isLoading render nếu == true
   return isLoading ? (
     <div className='h-screen w-screen fixed left-0 top-0 bg-rose-900 flex justify-center bg-opacity-70 items-center z-50'>
-      <FadeLoader radius='4' speedMultiplier='0.5' color='#E71D36' />
+      <FadeLoader speedMultiplier='0.5' color='#E71D36' />
     </div>
   ) : (
     <></>

@@ -48,8 +48,11 @@ export default function HomePage() {
       <div>
         <Carousel />
       </div>
-      <p className='text-center text-xl font-link underline'> LỊCH CHIẾU</p>
-      <div className='grid grid-cols-5 gap-4 font-link' id='lichChieu'>
+      <p className='text-center text-xl font-link underline' id='lichChieu'>
+        {" "}
+        LỊCH CHIẾU
+      </p>
+      <div className='grid grid-cols-5 gap-4 font-link'>
         {renderMoviesCard()}
       </div>
 
