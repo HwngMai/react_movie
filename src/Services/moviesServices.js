@@ -21,8 +21,8 @@ export const moviesServ = {
     return https.get(uri);
   },
   // gọi data lấy detail movie cho trang detail movie
-  getDetailMovie: () => {
-    let uri = "api/QuanLyPhim/LayDanhSachBanner";
+  getDetailMovie: (maPhim) => {
+    let uri = `api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`;
     // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },

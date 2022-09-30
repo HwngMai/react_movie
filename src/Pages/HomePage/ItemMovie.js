@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "antd";
 import { NavLink } from "react-router-dom";
 const { Meta } = Card;
+
 // Lấy dữ liệu { data } vào functionComponent
 export default function ItemMovie({ data }) {
   return (

@@ -9,6 +9,7 @@ import {
   setLoadingOnAction,
   setLoadingOffAction,
 } from "../../Redux/actions/actionSpinner";
+
 export default function Carousel() {
   // Tạo useState carousel
   const [carousel, setCarousel] = useState([]);

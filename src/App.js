@@ -3,7 +3,7 @@ import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import "antd/dist/antd.min.css";
-import DetailMovie from "./Pages/HomePage/DetailMovie";
+import DetailMovie from "./Pages/DetailPage/DetailMovie";
 import Layout from "./Layout/Layout";
 import Spinner from "./Components/Spinner/Spinner";
 
