@@ -8,6 +8,7 @@ import {
   setLoadingOffAction,
 } from "../../Redux/actions/actionSpinner";
 import MovieInfo from "../../Components/DetailMovie/MovieInfo";
+//
 const DetailMovie = () => {
   //1. lấy id bằng cú pháp useParam()
   const maPhim = useParams();
@@ -37,14 +38,14 @@ const DetailMovie = () => {
         dispatch(setLoadingOffAction());
       });
   }, []);
-
   //4. render card cho từng phim
   const renderMovieDetail = () => {
     return <MovieInfo data={movieDetail} />;
   };
-  return (
-    <div className='container mx-auto'>{renderMovieDetail()}</div>
-  );
+  //1.
+
+  //
+  return <div className='container mx-auto'>{renderMovieDetail()}</div>;
 };
 
 export default DetailMovie;

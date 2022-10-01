@@ -26,4 +26,10 @@ export const moviesServ = {
     // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },
+  // gọi data lấy thông tin lịch chiếu theo phim cho trang detail movie
+  getScheduleMovie: (maPhim) => {
+    let uri = `api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`;
+    // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
+    return https.get(uri);
+  },
 };

@@ -59,7 +59,7 @@ export default function HomePage() {
       <div className='my-10 font-link' id='cumRap'>
         <p className='text-center text-xl font-link underline'>
           {" "}
-          THÔNG TIN RẠP VÀ PHIM ĐANG CHIẾU
+          THÔNG TIN CỤM RẠP 
         </p>
         <TabsMovie />
       </div>

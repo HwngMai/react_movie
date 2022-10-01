@@ -25,7 +25,6 @@ export default function MovieInfo({ data }) {
         </Descriptions.Item>
         <Descriptions.Item label='Đánh giá'>{data.danhGia}</Descriptions.Item>
         <Descriptions.Item label='Độ hot'>{hotRender()}</Descriptions.Item>
-
         <Descriptions.Item label='Mô Tả' span={4}>
           {data.moTa}
         </Descriptions.Item>
