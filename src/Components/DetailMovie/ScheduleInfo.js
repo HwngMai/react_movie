@@ -32,8 +32,9 @@ export default function ScheduleInfo({ data }) {
     });
   };
   return (
-    <div>
-      <Tabs style={{ height: 200 }} tabPosition='left' defaultActiveKey='1'>
+    <div className='font-link'>
+      <p className='text-center text-xl font-link underline'> Đặt vé {data.tenPhim} </p>
+      <Tabs style={{ height: 310 }} tabPosition='left' defaultActiveKey='1'>
         {renderSchedule()}
       </Tabs>
     </div>
