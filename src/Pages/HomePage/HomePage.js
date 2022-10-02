@@ -45,9 +45,13 @@ export default function HomePage() {
   };
   return (
     <div className='container mx-auto font-link'>
+      {/* // START - CAROUSEL */}
       <div>
         <Carousel />
       </div>
+      {/* // END - CAROUSEL */}
+
+      {/* // START - LỊCH CHIẾU */}
       <p className='text-center text-xl font-link underline' id='lichChieu'>
         {" "}
         LỊCH CHIẾU
@@ -55,14 +59,17 @@ export default function HomePage() {
       <div className='grid grid-cols-5 gap-4 font-link'>
         {renderMoviesCard()}
       </div>
+      {/* // END - LỊCH CHIẾU */}
 
+      {/* // START - THÔNG TIN CỤM RẠP */}
       <div className='my-10 font-link' id='cumRap'>
         <p className='text-center text-xl font-link underline'>
           {" "}
-          THÔNG TIN CỤM RẠP 
+          THÔNG TIN CỤM RẠP
         </p>
         <TabsMovie />
       </div>
+      {/* // END - THÔNG TIN CỤM RẠP */}
     </div>
   );
 }

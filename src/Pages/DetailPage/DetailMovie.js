@@ -8,27 +8,27 @@ import {
   setLoadingOffAction,
 } from "../../Redux/actions/actionSpinner";
 import MovieInfo from "../../Components/DetailMovie/MovieInfo";
+import ScheduleInfo from "../../Components/DetailMovie/ScheduleInfo";
 //
 const DetailMovie = () => {
   //1. lấy id bằng cú pháp useParam()
   const maPhim = useParams();
   console.log("id page: ", maPhim);
   //2. setState = useState
-  const [movieDetail, setMovieDetail] = useState([]);
+  const [movieSche, setmovieSche] = useState([]);
   // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
   const dispatch = useDispatch();
   //3. truyền id vào useEffect gọi data movie qua api 1 lần duy nhất
   useEffect(() => {
     // dispatch set isLoading = on
     dispatch(setLoadingOnAction());
-    // setState isLoading
-    // Gọi api danh sách phim từ moviesServ
+
     moviesServ
-      .getDetailMovie(maPhim.id)
+      .getScheduleMovie(maPhim.id)
       .then((res) => {
-        console.log("detail movie: ", res);
-        // setState cho movie bằng data gọi về từ api
-        setMovieDetail(res.data.content);
+        console.log("lich chieu theo phim: ", res);
+        // setState cho movieSche bằng data gọi về từ api
+        setmovieSche(res.data.content);
         // dispatch set isLoading = off
         dispatch(setLoadingOffAction());
       })
@@ -40,12 +40,20 @@ const DetailMovie = () => {
   }, []);
   //4. render card cho từng phim
   const renderMovieDetail = () => {
-    return <MovieInfo data={movieDetail} />;
+    return <MovieInfo data={movieSche} />;
   };
-  //1.
+  //5. render lịch chiếu theo phim
+  const renderMovieSche = () => {
+    return <ScheduleInfo data={movieSche} />;
+  };
 
   //
-  return <div className='container mx-auto'>{renderMovieDetail()}</div>;
+  return (
+    <div className='container mx-auto'>
+      <div>{renderMovieDetail()}</div>
+      <div>{renderMovieSche()}</div>
+    </div>
+  );
 };
 
 export default DetailMovie;

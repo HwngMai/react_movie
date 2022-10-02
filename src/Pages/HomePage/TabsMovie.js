@@ -17,7 +17,7 @@ export default function TabsMovies() {
   }, []);
 
   let renderContent = () => {
-    return dataMovies.map((heThongRap, index) => {
+    return dataMovies?.map((heThongRap, index) => {
       return (
         <Tabs.TabPane
           tab={<img className='w-16 h-16' src={heThongRap.logo} />}
