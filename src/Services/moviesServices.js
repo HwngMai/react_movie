@@ -4,13 +4,13 @@ import { https } from "./configURL";
 export const moviesServ = {
   // gọi data tạo list phim show trên main page
   getListMovie: () => {
-    let uri = "/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP04";
+    let uri = "/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03";
     // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },
   // gọi data tạo list hiển thị phim theo rạp
   getMovieByTheater: () => {
-    let uri = "/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP04";
+    let uri = "/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03";
     // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },
