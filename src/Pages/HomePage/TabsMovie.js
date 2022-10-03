@@ -4,6 +4,7 @@ import ItemTabsMovie from "./ItemTabsMovie";
 import { moviesServ } from "../../Services/moviesServices";
 export default function TabsMovies() {
   const [dataMovies, setDataMovies] = useState([]);
+  //gọi api lấy dữ liệu hệ thống rạp và phim đang chiếu dựa trên các rạp đó
   useEffect(() => {
     moviesServ
       .getMovieByTheater()

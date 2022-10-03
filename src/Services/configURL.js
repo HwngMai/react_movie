@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localServ } from "./localServices";
 // tạo biến chứa URL của api
 export const BASE_URL = "https://movienew.cybersoft.edu.vn";
 // tạo biến chứa token mở api
@@ -10,5 +11,7 @@ export let https = axios.create({
   baseURL: BASE_URL,
   headers: {
     TokenCybersoft: TOKEN_CYBERSOFT,
+    // kiểm tra accessToken
+    Authorization: "bearer " + localServ.user.get()?.accessToken,
   },
 });

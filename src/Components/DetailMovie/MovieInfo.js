@@ -3,9 +3,9 @@ import { Descriptions } from "antd";
 export default function MovieInfo({ data }) {
   const hotRender = () => {
     if (data.hot) {
-      return "Hot vãi";
+      return "Hot lắm nha";
     } else {
-      return "Cùi vl";
+      return "Cũng cùi thui";
     }
   };
   const trailerRender = () => {
