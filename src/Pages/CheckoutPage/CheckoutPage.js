@@ -19,6 +19,7 @@ export default function CheckoutPage() {
   });
   //3. tạo state cho thông tin show chiếu
   const [showDetail, setShowDetail] = useState([]);
+
   // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
   const dispatch = useDispatch();
   //4. lấy thông tin show chiếu
@@ -30,7 +31,7 @@ export default function CheckoutPage() {
     moviesServ
       .getShow(maLichChieu.id)
       .then((res) => {
-        console.log("data show: ", res);
+        console.log("data show - useEffect: ", res);
         // setstate cho show
         setShowDetail(res.data.content);
         // dispatch set isLoading = off
@@ -42,7 +43,19 @@ export default function CheckoutPage() {
         dispatch(setLoadingOffAction());
       });
   }, []);
-
+  // hàm render ghế
+  let renderSeat = () => {
+    console.log("showDetail - renderSeat(): ", showDetail);
+    showDetail.danhSachGhe?.map((ghe, index) => {
+      return (
+        <div
+          key={index}
+          className='ghe w-10 h-10 border flex justify-center items-center bg-orange-300'>
+          {ghe.stt}
+        </div>
+      );
+    });
+  };
   return (
     <div className='container m-auto'>
       CheckoutPage cho {maLichChieu.id}
@@ -54,9 +67,7 @@ export default function CheckoutPage() {
               <p className='text-center'> Màn Hình</p>
             </div>
             <div className='soDoGhe w-full h-full  grid grid-cols-4 gap-5'>
-              <div className='ghe w-10 h-10 border flex justify-center items-center bg-orange-300'>
-                Ghế
-              </div>
+              {renderSeat()}
             </div>
           </div>
         </div>
