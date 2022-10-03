@@ -5,6 +5,7 @@ const { Meta } = Card;
 
 // Lấy dữ liệu { data } vào functionComponent
 export default function ItemMovie({ data }) {
+  let desc = `Ngày khởi chiếu: ${data.ngayKhoiChieu}`;
   return (
     <div>
       {" "}
@@ -22,7 +23,7 @@ export default function ItemMovie({ data }) {
         }>
         <Meta
           title={<p className='text-red-500 truncate'>{data.tenPhim}</p>}
-          description={data.ngayKhoiChieu}
+          description={desc}
         />
         {/* tạo đường dẫn cho button bằng thẻ NavLink */}
         <NavLink to={`/detail/${data.maPhim}`}>

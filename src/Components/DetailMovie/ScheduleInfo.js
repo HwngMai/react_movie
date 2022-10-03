@@ -10,30 +10,48 @@ export default function ScheduleInfo({ data }) {
           tab={<img className='w-16 h-16' src={htr.logo} />}
           key={index}>
           {/* content của tab ở đây */}
-          <div key={index} className='grid grid-cols-4 gap-4'>
+          {htr.cumRapChieu?.map((cumRap, index) => {
+            return (
+              <div key={index}>
+                <div className='thongTinRap flex justify-start items-start'>
+                  <p className='text-xl'>{cumRap.tenCumRap}</p>
+                </div>
+                <div className='thongTinLichChieu pt-3 grid grid-cols-3 gap-5'>
+                  {cumRap.lichChieuPhim?.map((lichChieu, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className='rounded h-10 flex items-center justify-center bg-red-300 text-black hover:text-white hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
+                        <div>{lichChieu.ngayChieuGioChieu}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+          {/* <div key={index} className='grid grid-cols-4 gap-4'>
             {htr.cumRapChieu?.map((lichChieuPhim, index) => {
               return (
                 <div
                   key={index}
                   className='pt-3 flex items-center justify-center rounded bg-red-300 text-black hover:text-white hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
                   <p>{lichChieuPhim.tenRap}</p>
-                  <p>
-                    {" "}
-                    {moment(lichChieuPhim.ngayChieuGioChieu).format(
-                      "DD-MM-YYYY ~ hh:MM"
-                    )}
-                  </p>
+                  <p>123</p>
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </Tabs.TabPane>
       );
     });
   };
   return (
     <div className='font-link'>
-      <p className='text-center text-xl font-link underline'> Đặt vé {data.tenPhim} </p>
+      <p className='text-center text-xl font-link underline'>
+        {" "}
+        Đặt vé {data.tenPhim}{" "}
+      </p>
       <Tabs style={{ height: 310 }} tabPosition='left' defaultActiveKey='1'>
         {renderSchedule()}
       </Tabs>

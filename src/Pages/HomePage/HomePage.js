@@ -52,9 +52,9 @@ export default function HomePage() {
       {/* // END - CAROUSEL */}
 
       {/* // START - LỊCH CHIẾU */}
-      <p className='text-center text-xl font-link underline' id='lichChieu'>
+      <p className='text-center text-xl font-link underline' id='dsphim'>
         {" "}
-        LỊCH CHIẾU
+        DANH SÁCH PHIM
       </p>
       <div className='grid grid-cols-5 gap-4 font-link'>
         {renderMoviesCard()}
@@ -65,7 +65,7 @@ export default function HomePage() {
       <div className='my-10 font-link' id='cumRap'>
         <p className='text-center text-xl font-link underline'>
           {" "}
-          THÔNG TIN CỤM RẠP
+          THÔNG TIN CỤM RẠP & LỊCH CHIẾU
         </p>
         <TabsMovie />
       </div>

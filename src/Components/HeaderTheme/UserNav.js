@@ -25,6 +25,7 @@ export default function UserNav() {
   let renderUser = () => {
     console.log("renderUser");
     // nếu biến user lấy từ localstorage có giá trị (true)
+    // hiển thị thông tin user và nút đăng xuất
     if (user) {
       return (
         <>
@@ -39,6 +40,8 @@ export default function UserNav() {
         </>
       );
     } else {
+      // nếu biến user lấy từ localstorage ko có giá trị (false)
+      // hiển thị nút đăng nhập và đăng kí
       return (
         <>
           <div className='space-x-5 mx-5'>
