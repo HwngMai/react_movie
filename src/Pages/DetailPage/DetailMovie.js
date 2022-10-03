@@ -22,7 +22,7 @@ const DetailMovie = () => {
   useEffect(() => {
     // dispatch set isLoading = on
     dispatch(setLoadingOnAction());
-
+    // gọi data
     moviesServ
       .getScheduleMovie(maPhim.id)
       .then((res) => {

@@ -32,4 +32,10 @@ export const moviesServ = {
     // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },
+  // gọi data lấy thông tin lịch chiếu theo mã lịch chiếu cho trang checkout
+  getShow: (maLichChieu) => {
+    let uri = `api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`;
+    // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
+    return https.get(uri);
+  },
 };
