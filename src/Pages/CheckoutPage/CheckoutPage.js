@@ -46,27 +46,46 @@ export default function CheckoutPage() {
   // hàm render ghế
   let renderSeat = () => {
     console.log("showDetail - renderSeat(): ", showDetail);
-    showDetail.danhSachGhe?.map((ghe, index) => {
-      return (
-        <div
-          key={index}
-          className='ghe w-10 h-10 border flex justify-center items-center bg-orange-300'>
-          {ghe.stt}
-        </div>
-      );
+    return showDetail.danhSachGhe?.map((ghe, index) => {
+      if (ghe.daDat == false) {
+        if (ghe.loaiGhe == "Thuong") {
+          return (
+            <div
+              key={index}
+                className='ghe w-10 h-10 border flex justify-center items-center bg-orange-300 hover:cursor-pointer'>
+              {ghe.stt}
+            </div>
+          );
+        } else {
+          return (
+            <div
+              key={index}
+              className='ghe w-10 h-10 border flex justify-center items-center bg-red-300 hover:cursor-pointer'>
+              {ghe.stt}
+            </div>
+          );
+        }
+      } else
+        return (
+          <div
+            key={index}
+            className='ghe w-10 h-10 border flex justify-center items-center bg-red-800 hover:cursor-not-allowed'>
+            {ghe.stt}
+          </div>
+        );
     });
   };
   return (
     <div className='container m-auto'>
       CheckoutPage cho {maLichChieu.id}
       <div className='flex flex-row justify-between items-start'>
-        <div className='col-span-8 w-2/3 rounded-sm'>
+        <div className='col-span-8 w-2/3 rounded-sm p-5'>
           <p className='text-m text-left text-rose-500'>Thông tin chỗ ngồi:</p>
           <div className='soDoRap w-full h-full '>
-            <div className='manHinh h-10 bg-slate-500 text-center shadow-2xl m-5'>
+            <div className='manHinh flex justify-center items-center bg-slate-500 shadow-2xl m-5'>
               <p className='text-center'> Màn Hình</p>
             </div>
-            <div className='soDoGhe w-full h-full  grid grid-cols-4 gap-5'>
+            <div className='soDoGhe w-full h-full  grid grid-cols-12 gap-5'>
               {renderSeat()}
             </div>
           </div>
