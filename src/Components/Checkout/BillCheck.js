@@ -9,7 +9,7 @@ export default function BillCheck({ data }) {
   });
   console.log("data billcheck - user: ", user);
   return (
-    <div className='billCheck col-span-4 w-1/3 border rounded-lg '>
+    <div className='billCheck col-span-4 w-1/4 border rounded-lg '>
       <h3 className='text-xl text-center text-red-800 pt-3'>
         {" "}
         Tổng tiền: 0 Đ{" "}

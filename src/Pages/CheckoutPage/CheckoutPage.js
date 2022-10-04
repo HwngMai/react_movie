@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { moviesServ } from "../../Services/moviesServices";
 import {
@@ -14,7 +14,11 @@ export default function CheckoutPage() {
   //1. lấy id bằng cú pháp useParam()
   const maLichChieu = useParams();
   console.log("id lịch chiếu: ", maLichChieu.id);
+  //2 lấy danh sách ghế đang đặt từ reducer store bằng useSelector
+  const { danhSachGheDangDat } = useSelector((state) => state.checkoutReducer);
+  console.log("danhSachGheDangDat: ", danhSachGheDangDat);
   //3. tạo state cho thông tin show chiếu setState = useState
+
   const [showDetail, setShowDetail] = useState([]);
   // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
   const dispatch = useDispatch();
@@ -51,7 +55,7 @@ export default function CheckoutPage() {
   //6.
   return (
     <div className='container m-auto'>
-      <div className='flex flex-row justify-between items-start'>
+      <div className='flex flex-row justify-between items-center'>
         {renderSoDoRap()}
         {renderBillCheck()}
       </div>
