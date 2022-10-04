@@ -10,7 +10,7 @@ import {
 
 export default function CheckoutPage() {
   //1. lấy id bằng cú pháp useParam()
-  const maLichChieu = useParams();
+  let maLichChieu = useParams();
   console.log("id lịch chiếu: ", maLichChieu.id);
   //2. lấy thông tin người dùng
   // lấy thông tin từ store về state bằng useSelector
@@ -19,7 +19,6 @@ export default function CheckoutPage() {
   });
   //3. tạo state cho thông tin show chiếu
   const [showDetail, setShowDetail] = useState([]);
-
   // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
   const dispatch = useDispatch();
   //4. lấy thông tin show chiếu
@@ -47,29 +46,34 @@ export default function CheckoutPage() {
   let renderSeat = () => {
     console.log("showDetail - renderSeat(): ", showDetail);
     return showDetail.danhSachGhe?.map((ghe, index) => {
+      // nếu ghế chưa đặt
       if (ghe.daDat == false) {
         if (ghe.loaiGhe == "Thuong") {
           return (
             <div
               key={index}
-                className='ghe w-10 h-10 border flex justify-center items-center bg-orange-300 hover:cursor-pointer'>
+              className='ghe w-10 h-10 rounded-md border flex justify-center items-center bg-green-300 hover:cursor-pointer'>
               {ghe.stt}
             </div>
           );
         } else {
           return (
-            <div
-              key={index}
-              className='ghe w-10 h-10 border flex justify-center items-center bg-red-300 hover:cursor-pointer'>
-              {ghe.stt}
-            </div>
+            <button>
+              <div
+                key={index}
+                className='ghe w-10 h-10 rounded-md border flex justify-center items-center bg-yellow-300 hover:cursor-pointer'>
+                {ghe.stt}
+              </div>
+            </button>
           );
         }
-      } else
+      }
+      // nếu ghế đã đặt
+      else
         return (
           <div
             key={index}
-            className='ghe w-10 h-10 border flex justify-center items-center bg-red-800 hover:cursor-not-allowed'>
+            className='ghe w-10 h-10 border rounded-md flex justify-center items-center bg-red-500 hover:cursor-not-allowed'>
             {ghe.stt}
           </div>
         );
@@ -77,13 +81,23 @@ export default function CheckoutPage() {
   };
   return (
     <div className='container m-auto'>
-      CheckoutPage cho {maLichChieu.id}
       <div className='flex flex-row justify-between items-start'>
         <div className='col-span-8 w-2/3 rounded-sm p-5'>
           <p className='text-m text-left text-rose-500'>Thông tin chỗ ngồi:</p>
+          <div className='flex items-center justify-center gap-10'>
+            <div className='ghe w-16 h-16 border rounded-md flex justify-center items-center bg-green-300 hover:cursor-not-allowed text-center'>
+              Ghế thường
+            </div>
+            <div className='ghe w-16 h-16 border rounded-md flex justify-center items-center bg-yellow-300 hover:cursor-not-allowed text-center'>
+              Ghế Vip
+            </div>
+            <div className='ghe w-16 h-16 border rounded-md flex justify-center items-center bg-red-500 hover:cursor-not-allowed text-center'>
+              Ghế đã đặt
+            </div>
+          </div>
           <div className='soDoRap w-full h-full '>
-            <div className='manHinh flex justify-center items-center bg-slate-500 shadow-2xl m-5'>
-              <p className='text-center'> Màn Hình</p>
+            <div className='manHinh rounded-lg flex justify-center items-center bg-slate-500 shadow-2xl m-5'>
+              <p className='text-center text-white'> Màn Hình</p>
             </div>
             <div className='soDoGhe w-full h-full  grid grid-cols-12 gap-5'>
               {renderSeat()}
@@ -91,16 +105,22 @@ export default function CheckoutPage() {
           </div>
         </div>
         <div className='col-span-4 w-1/3 border rounded-lg '>
-          <h3 className='text-xl text-center text-red-800 '>
+          <h3 className='text-xl text-center text-red-800 pt-3'>
             {" "}
             Tổng tiền: 0 Đ{" "}
           </h3>
           <hr />
-          <h3 className='text-m text-center text-rose-500'>Tên phim: </h3>
-          <p className='text-m text-center text-rose-500'> Địa điểm: </p>
+          <h3 className='text-m text-center text-rose-500'>
+            Tên phim: {showDetail.thongTinPhim.tenPhim}
+          </h3>
           <p className='text-m text-center text-rose-500'>
             {" "}
-            Ngày chiếu: - Rạp: -{" "}
+            Địa điểm: {showDetail.thongTinPhim.diaChi}
+          </p>
+          <p className='text-m text-center text-rose-500'>
+            {" "}
+            Ngày chiếu: {showDetail.thongTinPhim.ngayChieu} -{" "}
+            {showDetail.thongTinPhim.tenRap}{" "}
           </p>
           <hr />
           <div className='grid text-center text-black'>
