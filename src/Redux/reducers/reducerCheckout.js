@@ -1,5 +1,5 @@
 import {} from "../../Services/localServices";
-import { SET_CHECKOUT } from "../constants/constantUser";
+import { SET_CHECKOUT } from "../constants/constantCheckout";
 
 const initialState = {
   // thông tin liên quan đến checkout ở đây

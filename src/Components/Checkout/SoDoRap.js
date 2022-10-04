@@ -1,10 +1,7 @@
 import React from "react";
-import { useState } from "react";
 export default function SoDoRap({ data }) {
-  const [normalSeatSelect, setNormalSeatSelect] = useState("bg-green-300");
   // hàm đổi màu ghế
-  let handleSeatSelect = () => {
-  };
+  let handleSeatSelect = () => {};
 
   // hàm render sơ đồ ghế
   let renderSeat = () => {
@@ -21,9 +18,8 @@ export default function SoDoRap({ data }) {
               <div
                 key={index}
                 className={
-                  "ghe w-10 h-10 rounded-md border flex justify-center items-center hover:shadow-xl hover:cursor-pointer " +
-                  `${normalSeatSelect} ` +
-                  `${ghe.stt}`
+                  "ghe w-10 h-10 rounded-md border flex justify-center items-center  bg-green-300 hover:shadow-xl hover:cursor-pointer " +
+                  +`${ghe.stt}`
                 }>
                 {ghe.stt}
               </div>
@@ -66,6 +62,9 @@ export default function SoDoRap({ data }) {
         </div>
         <div className='ghe w-16 h-16 border rounded-md flex justify-center items-center bg-red-500 text-center'>
           Ghế đã đặt
+        </div>
+        <div className='ghe w-16 h-16 border rounded-md flex justify-center items-center bg-rose-300 text-center'>
+          Ghế bạn chọn
         </div>
       </div>
       <div className='soDoRap w-full h-full '>

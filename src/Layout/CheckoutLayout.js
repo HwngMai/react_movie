@@ -44,5 +44,5 @@ export default function CheckoutLayout({ Component }) {
         </div>
       </div>
     );
-  } else return <div> vui lòng đăng nhập </div>;
+  } else return <div> Vui lòng đăng nhập </div>;
 }
