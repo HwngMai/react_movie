@@ -56,7 +56,7 @@ export default function SoDoRap({ data }) {
         <div className='manHinh rounded-lg flex justify-center items-center bg-slate-500 shadow-2xl m-5'>
           <p className='text-center text-white'> Màn Hình</p>
         </div>
-        <div className='soDoGhe w-full h-full  grid grid-cols-12 gap-5'>
+        <div className='soDoGhe w-full h-full  grid grid-cols-16 gap-5'>
           {renderSeat()}
         </div>
       </div>
