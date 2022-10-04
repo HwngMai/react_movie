@@ -16,7 +16,6 @@ export default function ScheduleInfo({ data }) {
                 <div className='thongTinRap flex justify-start items-start'>
                   <p className='text-xl font-bold'>{cumRap.tenCumRap}</p>
                 </div>
-                <p className='text-l underline'> LỊCH CHIẾU: </p>
                 <div className='thongTinLichChieu pt-3 grid grid-cols-3 gap-5'>
                   {cumRap.lichChieuPhim?.map((lichChieu, index) => {
                     return (
