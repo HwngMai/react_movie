@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, message, Checkbox, Form, Input } from "antd";
+import { Button, message, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import bg_animate2 from "../../Assets/bg_animate2.json";

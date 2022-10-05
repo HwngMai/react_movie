@@ -1,11 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import modelDataDatVe from "../../models/dataDatve";
+import { actionPostDatVe } from "../../Redux/actions/actionCheckout";
+import { useDispatch } from "react-redux";
 export default function BillCheck({ data }) {
+  // lấy mã lichChieu
+  const maLichChieu = useParams();
   //1. lấy thông tin ghế đang đặt từ reducer
   const { danhSachGheDangDat } = useSelector((state) => state.checkoutReducer);
   //1.1 gán state cho danhSachGheDangDat để render
   //2. lấy thông tin người dùng
-  // lấy thông tin từ store về state bằng useSelector
+
+  // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
+  const dispatch = useDispatch();
   //3. hàm render số tiền và số ghế
   let renderBill = () => {
     let tongTien = 0;
@@ -21,14 +29,14 @@ export default function BillCheck({ data }) {
               {" "}
               <p className='text-m text-center text-rose-500'>
                 {" "}
-                {ghe.stt} - {ghe.giaVe}
+                Ghế: {ghe.stt} - {ghe.giaVe}vnđ
               </p>
             </div>
           );
         })}
         <p className='text-m underline text-center text-red-800'>
           {" "}
-          Tổng tiền: {tongTien}{" "}
+          Tổng tiền: {tongTien}vnđ
         </p>
       </div>
     );
@@ -37,7 +45,7 @@ export default function BillCheck({ data }) {
     return state.userReducer.userInfor;
   });
   return (
-    <div className=' billCheck col-span-4 w-1/4 border rounded-lg '>
+    <div className=' billCheck col-span-4 w-1/4 border rounded-lg p-3'>
       <h3 className=' text-xl text-center text-red-800 pt-3'>
         {" "}
         Thẻ thanh toán{" "}
@@ -62,10 +70,20 @@ export default function BillCheck({ data }) {
       </div>
       <hr />
       {renderBill()}
-      <div className='rounded h-10 flex items-center justify-center bg-red-300 text-black hover:text-white hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
-        {" "}
-        Đặt vé{" "}
-      </div>
+      <button
+        className='w-full h-full'
+        onClick={() => {
+          const dataDatVe = new modelDataDatVe();
+          dataDatVe.maLichChieu = maLichChieu.id;
+          dataDatVe.danhSachVe = danhSachGheDangDat;
+          console.log("dataDatVe: ", dataDatVe);
+          dispatch(actionPostDatVe(dataDatVe));
+        }}>
+        <div className='rounded h-10 flex items-center justify-center bg-red-300 text-black hover:text-white hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
+          {" "}
+          Đặt vé{" "}
+        </div>
+      </button>
     </div>
   );
 }

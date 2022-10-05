@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setDatVe } from "../../Redux/actions/actionCheckout";
+import { actionSetDatVe, setDatVe } from "../../Redux/actions/actionCheckout";
 export default function SoDoRap({ data }) {
   // useSelector lấy dữ liệu ghế khách chọn
   const { danhSachGheDangDat } = useSelector((state) => state.checkoutReducer);
@@ -28,7 +28,7 @@ export default function SoDoRap({ data }) {
           <button
             key={index}
             onClick={() => {
-              dispatch(setDatVe(ghe));
+              dispatch(actionSetDatVe(ghe));
             }}>
             <div
               className={
