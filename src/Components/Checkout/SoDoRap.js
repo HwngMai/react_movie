@@ -10,9 +10,12 @@ export default function SoDoRap({ data }) {
   // hàm render sơ đồ ghế
   let renderSeat = () => {
     return data.danhSachGhe?.map((ghe, index) => {
+      // tạo tên class hiển thị màu cho từng loại ghế
       let classGheDaDat = "bg-red-500";
       let classGheDangDat = "bg-rose-300";
+      // kiểm tra ghế
       let classGhe = ghe.loaiGhe === "Vip" ? "bg-yellow-300" : "bg-green-300";
+      // kiểm tra index của các phần tử trong mảng danhSachGheDangDat lấy từ store để render màu ghế
       let indexGheDD = danhSachGheDangDat.findIndex(
         (gheDD) => gheDD.maGhe === ghe.maGhe
       );
@@ -21,36 +24,21 @@ export default function SoDoRap({ data }) {
       }
       // nếu ghế chưa đặt
       if (ghe.daDat == false) {
-        if (ghe.loaiGhe == "Thuong") {
-          return (
-            <button
-              key={index}
-              onClick={() => {
-                // gửi dữ liệu ghế lên reducerCheckout
-                dispatch(setDatVe(ghe));
-              }}>
-              <div
-                className={
-                  "ghe w-10 h-10 rounded-md border flex justify-center items-center   bg-green-300 hover:shadow-xl hover:cursor-pointer " +
-                  classGhe
-                }>
-                {ghe.stt}
-              </div>
-            </button>
-          );
-        } else {
-          return (
-            <button
-              key={index}
-              onClick={() => {
-                dispatch(setDatVe(ghe));
-              }}>
-              <div className='ghe w-10 h-10 rounded-md border flex hover:shadow-xl justify-center items-center bg-yellow-300 hover:cursor-pointer'>
-                {ghe.stt}
-              </div>
-            </button>
-          );
-        }
+        return (
+          <button
+            key={index}
+            onClick={() => {
+              dispatch(setDatVe(ghe));
+            }}>
+            <div
+              className={
+                "ghe w-10 h-10 rounded-md border flex hover:shadow-xl justify-center items-center hover:cursor-pointer " +
+                classGhe
+              }>
+              {ghe.stt}
+            </div>
+          </button>
+        );
       }
       // nếu ghế đã đặt
       else
