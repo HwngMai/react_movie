@@ -1,18 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 export default function BillCheck({ data }) {
-  console.log("data billcheck - showDetail: ", data);
   //2. lấy thông tin người dùng
   // lấy thông tin từ store về state bằng useSelector
   const user = useSelector((state) => {
     return state.userReducer.userInfor;
   });
-  console.log("data billcheck - user: ", user);
   return (
-    <div className='billCheck col-span-4 w-1/4 border rounded-lg '>
-      <h3 className='text-xl text-center text-red-800 pt-3'>
+    <div className=' billCheck col-span-4 w-1/4 border rounded-lg '>
+      <h3 className=' text-xl text-center text-red-800 pt-3'>
         {" "}
-        Tổng tiền: 0 Đ{" "}
+        Thẻ thanh toán{" "}
       </h3>
       <hr />
       <h3 className='text-m text-center text-rose-500'>
@@ -36,6 +34,10 @@ export default function BillCheck({ data }) {
       <div className='grid grid-cols-2  '>
         <p className='text-m text-center text-rose-500'> Số ghế: </p>
         <p className='text-m text-center text-red-800'> Tiền: </p>
+      </div>
+      <div className='rounded h-10 flex items-center justify-center bg-red-300 text-black hover:text-white hover:bg-red-500 transtion duration-300 cursor-pointer hover:shadow'>
+        {" "}
+        Đặt vé{" "}
       </div>
     </div>
   );

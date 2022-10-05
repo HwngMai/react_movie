@@ -1,1 +1,1 @@
-export const SET_CHECKOUT = "SET_CHECKOUT";
+export const SET_DAT_VE = "SET_DAT_VE";

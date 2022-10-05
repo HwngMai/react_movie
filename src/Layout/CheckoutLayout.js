@@ -15,7 +15,6 @@ export default function CheckoutLayout({ Component }) {
   useEffect(() => {
     let userLocal = localServ.user.get();
     setFlag(userLocal);
-    console.log("flag: ", flag);
     // nếu chưa có show message rồi chuyển sang login
     if (!userLocal) {
       message.warning({

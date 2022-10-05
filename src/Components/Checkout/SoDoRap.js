@@ -1,25 +1,38 @@
 import React from "react";
-export default function SoDoRap({ data }) {
-  // hàm đổi màu ghế
-  let handleSeatSelect = () => {};
 
+import { useSelector, useDispatch } from "react-redux";
+import { setDatVe } from "../../Redux/actions/actionCheckout";
+export default function SoDoRap({ data }) {
+  // useSelector lấy dữ liệu ghế khách chọn
+  const { danhSachGheDangDat } = useSelector((state) => state.checkoutReducer);
+  // gọi hàm useDispatch để gọi cú pháp dispatch dữ liệu từ redux thunk
+  const dispatch = useDispatch();
   // hàm render sơ đồ ghế
   let renderSeat = () => {
-    console.log("data - renderSeat(): ", data);
     return data.danhSachGhe?.map((ghe, index) => {
+      let classGheDaDat = "bg-red-500";
+      let classGheDangDat = "bg-rose-300";
+      let classGhe = ghe.loaiGhe === "Vip" ? "bg-yellow-300" : "bg-green-300";
+      let indexGheDD = danhSachGheDangDat.findIndex(
+        (gheDD) => gheDD.maGhe === ghe.maGhe
+      );
+      if (indexGheDD != -1) {
+        classGhe = classGheDangDat;
+      }
       // nếu ghế chưa đặt
       if (ghe.daDat == false) {
         if (ghe.loaiGhe == "Thuong") {
           return (
             <button
+              key={index}
               onClick={() => {
-                handleSeatSelect();
+                // gửi dữ liệu ghế lên reducerCheckout
+                dispatch(setDatVe(ghe));
               }}>
               <div
-                key={index}
                 className={
-                  "ghe w-10 h-10 rounded-md border flex justify-center items-center  bg-green-300 hover:shadow-xl hover:cursor-pointer " +
-                  +`${ghe.stt}`
+                  "ghe w-10 h-10 rounded-md border flex justify-center items-center   bg-green-300 hover:shadow-xl hover:cursor-pointer " +
+                  classGhe
                 }>
                 {ghe.stt}
               </div>
@@ -27,10 +40,12 @@ export default function SoDoRap({ data }) {
           );
         } else {
           return (
-            <button onClick={() => {}}>
-              <div
-                key={index}
-                className='ghe w-10 h-10 rounded-md border flex hover:shadow-xl justify-center items-center bg-yellow-300 hover:cursor-pointer'>
+            <button
+              key={index}
+              onClick={() => {
+                dispatch(setDatVe(ghe));
+              }}>
+              <div className='ghe w-10 h-10 rounded-md border flex hover:shadow-xl justify-center items-center bg-yellow-300 hover:cursor-pointer'>
                 {ghe.stt}
               </div>
             </button>
@@ -42,7 +57,10 @@ export default function SoDoRap({ data }) {
         return (
           <div
             key={index}
-            className='ghe w-10 h-10 border rounded-md flex justify-center items-center bg-red-500 hover:cursor-not-allowed'>
+            className={
+              "ghe w-10 h-10 border rounded-md flex justify-center items-center hover:cursor-not-allowed " +
+              classGheDaDat
+            }>
             X
           </div>
         );
