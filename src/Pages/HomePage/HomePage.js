@@ -23,8 +23,6 @@ export default function HomePage() {
     moviesServ
       .getListMovie()
       .then((res) => {
-        // setState isLoading
-        console.log("data list movie: ", res);
         // setState cho movieList bằng data gọi về từ api
         setMovies(res.data.content);
         // dispatch set isLoading = off

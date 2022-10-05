@@ -8,7 +8,6 @@ export default function UserNav() {
   let user = useSelector((state) => {
     return state.userReducer.userInfor;
   });
-  console.log("user", user);
   // hàm xử lí thao tác đăng xuất
   let handleLogout = () => {
     // xóa dữ liệu từ localstorage
@@ -23,7 +22,6 @@ export default function UserNav() {
   };
   // viết hàm render thông tin user
   let renderUser = () => {
-    console.log("renderUser");
     // nếu biến user lấy từ localstorage có giá trị (true)
     // hiển thị thông tin user và nút đăng xuất
     if (user) {

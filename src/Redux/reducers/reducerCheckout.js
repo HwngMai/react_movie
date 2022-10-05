@@ -23,7 +23,6 @@ export const checkoutReducer = (state = initialState, action) => {
       }
       // gán lại danhSachGheDangDat - lưu về state
       state.danhSachGheDangDat = danhSachGheCapNhat;
-      console.log("danhSachGheDangDat: ", state.danhSachGheDangDat);
       return { ...state };
     default:
       return state;
