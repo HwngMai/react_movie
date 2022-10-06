@@ -49,6 +49,7 @@ export default function Regis() {
         <Lottie animationData={bg_animate3}></Lottie>
       </div>
       <div className='w-1/3 h-full'>
+        <p className='underline mt-5'> Đăng kí tài khoản mới: </p>
         <Form
           className='w-full '
           layout='vertical'
