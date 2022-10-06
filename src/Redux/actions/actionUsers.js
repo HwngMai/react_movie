@@ -1,11 +1,17 @@
 // Action sử dụng thunk - gọi api sau khi dispatch
 import { userServ } from "../../Services/userServies";
-import { SET_USER } from "../constants/constantUser";
+import { SET_USER, SET_USER_REGIS } from "../constants/constantUser";
 import { localServ } from "../../Services/localServices";
 // tạo hàm setUserLoginSuccess chứa dữ liệu dispatch
 const setUserLoginSuccess = (successValue) => {
   return {
     type: SET_USER,
+    payload: successValue,
+  };
+};
+const setUserRegisSuccess = (successValue) => {
+  return {
+    type: SET_USER_REGIS,
     payload: successValue,
   };
 };
@@ -50,7 +56,7 @@ export const setUserRegisActionServ = (
         // lưu vào USER storage
         localServ.user.setItemRegis(res.data.content);
         // dispatch dữ liệu
-        dispatch(setUserLoginSuccess(res.data.content));
+        dispatch(setUserRegisSuccess(res.data.content));
         onRegisSuccess();
       })
       .catch((err) => {
