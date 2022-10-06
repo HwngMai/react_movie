@@ -30,14 +30,15 @@ export default function CheckoutLayout({ Component }) {
   if (flag) {
     return (
       <div className=''>
-        <NavLink to='/'>
-          <div className='h-20 flex justify-between mx-auto items-center bg-red-300 px-4'>
-            <span className=' flex text-3xl text-black items-center justify-center font-bold'>
+        <div className='h-20 flex justify-between mx-auto items-center bg-red-300 px-4 '>
+          <NavLink to='/'>
+            <span className=' flex text-3xl text-black items-center justify-center font-bold '>
               {" "}
               <VscRocket /> CYBERFLIX - TRANG THANH TOÁN
             </span>
-          </div>
-        </NavLink>
+          </NavLink>
+        </div>
+
         <div className='pt-5 -z-10 w-full'>
           <Component />
         </div>

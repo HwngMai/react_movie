@@ -9,6 +9,7 @@ import {
   setLoadingOffAction,
 } from "../../Redux/actions/actionSpinner";
 import Carousel from "../../Components/Carousel/Carousel";
+import SearchNav from "../../Components/SearchNav/SearchNav";
 export default function HomePage() {
   // Tạo useState movies
   const [movies, setMovies] = useState([]);
@@ -48,7 +49,11 @@ export default function HomePage() {
         <Carousel />
       </div>
       {/* // END - CAROUSEL */}
-
+      {/* // START - CAROUSEL */}
+      <div>
+        <SearchNav />
+      </div>
+      {/* // END - CAROUSEL */}
       {/* // START - LỊCH CHIẾU */}
       <p className='text-center text-xl font-link underline' id='dsphim'>
         {" "}
@@ -73,4 +78,3 @@ export default function HomePage() {
     </div>
   );
 }
-

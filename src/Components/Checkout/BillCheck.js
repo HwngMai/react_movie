@@ -10,8 +10,6 @@ export default function BillCheck({ data }) {
   //1. lấy thông tin ghế đang đặt từ reducer
   const { danhSachGheDangDat } = useSelector((state) => state.checkoutReducer);
   //1.1 gán state cho danhSachGheDangDat để render
-  //2. lấy thông tin người dùng
-
   // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
   const dispatch = useDispatch();
   //3. hàm render số tiền và số ghế
