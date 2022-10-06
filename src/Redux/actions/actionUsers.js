@@ -35,3 +35,27 @@ export const setUserLoginActionServ = (
       });
   };
 };
+export const setUserRegisActionServ = (
+  dataRegis,
+  onRegisSuccess,
+  onRegisFail
+) => {
+  return (dispatch) => {
+    // gọi api
+    userServ
+      .postRegis(dataRegis)
+      //
+      .then((res) => {
+        console.log("data Regis: ", res);
+        // lưu vào USER storage
+        localServ.user.setItemRegis(res.data.content);
+        // dispatch dữ liệu
+        dispatch(setUserLoginSuccess(res.data.content));
+        onRegisSuccess();
+      })
+      .catch((err) => {
+        console.log(err);
+        onRegisFail();
+      });
+  };
+};

@@ -34,7 +34,7 @@ export default function BillCheck({ data }) {
             </div>
           );
         })}
-        <p className='text-m underline text-center text-red-800'>
+        <p className='text-m font-bold underline text-center text-red-800'>
           {" "}
           Tổng tiền: {tongTien}vnđ
         </p>
@@ -46,12 +46,12 @@ export default function BillCheck({ data }) {
   });
   return (
     <div className=' billCheck col-span-4 w-1/4 border rounded-lg p-3'>
-      <h3 className=' text-xl text-center text-red-800 pt-3'>
+      <h3 className=' text-xl text-center underline text-red-800'>
         {" "}
-        Thẻ thanh toán{" "}
+        THẺ THANH TOÁN{" "}
       </h3>
       <hr />
-      <h3 className='text-m text-center text-rose-500'>
+      <h3 className='text-m  text-center text-rose-500'>
         Tên phim: {data.thongTinPhim?.tenPhim}
       </h3>
       <p className='text-m text-center text-rose-500'>

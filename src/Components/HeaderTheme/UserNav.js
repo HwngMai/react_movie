@@ -49,10 +49,12 @@ export default function UserNav() {
                 Đăng nhập
               </button>
             </NavLink>
-            <button className='border rounded transition hover:bg-red-500  border-red-500 px-5 py-2 text-black hover:text-white'>
-              {" "}
-              Đăng kí
-            </button>
+            <NavLink to='/regis'>
+              <button className='border rounded transition hover:bg-red-500  border-red-500 px-5 py-2 text-black hover:text-white'>
+                {" "}
+                Đăng kí
+              </button>
+            </NavLink>
           </div>
         </>
       );

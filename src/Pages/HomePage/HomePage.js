@@ -54,9 +54,11 @@ export default function HomePage() {
         {" "}
         DANH SÁCH PHIM
       </p>
+
       <div className='grid grid-cols-5 gap-4 font-link'>
         {renderMoviesCard()}
       </div>
+
       {/* // END - LỊCH CHIẾU */}
 
       {/* // START - THÔNG TIN CỤM RẠP */}
@@ -71,3 +73,4 @@ export default function HomePage() {
     </div>
   );
 }
+

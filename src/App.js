@@ -9,6 +9,7 @@ import Spinner from "./Components/Spinner/Spinner";
 import ScrollToTop from "./Utils/ScrollToTop";
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 import CheckoutLayout from "./Layout/CheckoutLayout";
+import Regis from "./Components/Regis/Regis";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               path='/checkout/:id'
               element={<CheckoutLayout Component={CheckoutPage} />}
             />
+            <Route path='/regis' element={<Layout Component={Regis} />} />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>
