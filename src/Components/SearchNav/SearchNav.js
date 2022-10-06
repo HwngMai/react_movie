@@ -38,14 +38,16 @@ export default function SearchNav() {
       });
   }, []);
   const onSearch = (value) => {
+    // tìm index dựa theo tên phim
     let index = dataPhim.findIndex((phim) => phim.tenPhim === value);
     if (index != -1) {
       message.success("Tìm thấy phim " + value);
+      // lấy mã phim và chuyển hướng đến trang chi tiết
       let maPhimSearch = dataPhim[index].maPhim;
       console.log("maPhimSearch: ", maPhimSearch);
       setTimeout(() => {
         navigate(`/detail/${maPhimSearch}`);
-      }, 1000);
+      }, 500);
     } else {
       message.warning(" Không tìm thấy phim: " + value);
     }

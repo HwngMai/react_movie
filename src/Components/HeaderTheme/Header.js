@@ -14,7 +14,7 @@ export default function Header() {
           </span>
         </NavLink>
         <div className='flex gap-5'>
-          <Link to='dsphim' offset={-100} smooth={true}>
+          <Link to='dsphim' offset={-150} smooth={true}>
             <span className='text-base underline text-red-500 hover:text-black transition duration-300'>
               DANH SÁCH PHIM
             </span>
