@@ -10,6 +10,7 @@ import ScrollToTop from "./Utils/ScrollToTop";
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 import CheckoutLayout from "./Layout/CheckoutLayout";
 import Regis from "./Components/Regis/Regis";
+import UserPage from "./Pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
               element={<CheckoutLayout Component={CheckoutPage} />}
             />
             <Route path='/regis' element={<Layout Component={Regis} />} />
+            <Route path='/user/:taiKhoan' element={<Layout Component={UserPage} />} />
+
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

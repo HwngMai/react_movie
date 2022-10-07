@@ -5,8 +5,8 @@ import { VscRocket } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
-    <div className='shadow-xl font-link'>
-      <div className='h-20 flex justify-between mx-auto items-center bg-red-300 px-4'>
+    <div className='shadow-xl font-link' >
+      <div className='h-20 flex  justify-between mx-auto items-center bg-red-300 px-4'>
         <NavLink to='/'>
           <span className=' flex text-3xl animate-pulse text-black items-center justify-center font-bold'>
             {" "}

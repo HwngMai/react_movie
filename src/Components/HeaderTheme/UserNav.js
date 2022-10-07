@@ -27,8 +27,10 @@ export default function UserNav() {
     if (user) {
       return (
         <>
-          {" "}
-          <span className='mx-4 underline'> {user.taiKhoan}</span>
+          <NavLink to={`/user/${user.taiKhoan}`}>
+            {" "}
+            <span className='mx-4 underline text-black'> {user.taiKhoan}</span>
+          </NavLink>
           <button
             onClick={handleLogout}
             className='border rounded px-5 py-1.5 text-red-500 hover:bg-white transition duration-300'>

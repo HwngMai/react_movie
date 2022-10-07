@@ -10,6 +10,7 @@ import {
 } from "../../Redux/actions/actionSpinner";
 import Carousel from "../../Components/Carousel/Carousel";
 import SearchNav from "../../Components/SearchNav/SearchNav";
+import BackToTop from "../../Components/BackToTop/BackToTop";
 export default function HomePage() {
   // Tạo useState movies
   const [movies, setMovies] = useState([]);
@@ -45,7 +46,7 @@ export default function HomePage() {
   return (
     <div className='container mx-auto font-link'>
       {/* // START - CAROUSEL */}
-      <div>
+      <div id='carousel'>
         <Carousel />
       </div>
       {/* // END - CAROUSEL */}
@@ -75,6 +76,11 @@ export default function HomePage() {
         <TabsMovie />
       </div>
       {/* // END - THÔNG TIN CỤM RẠP */}
+      {/* // START - BACK TO TOP */}
+      <div className='backToTop fixed '>
+        <BackToTop />
+      </div>
+      {/* // END - BACK TO TOP */}
     </div>
   );
 }
