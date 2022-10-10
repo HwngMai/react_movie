@@ -2,7 +2,7 @@ import { message } from "antd";
 import React from "react";
 import { userServ } from "../../Services/userServies";
 import { useState } from "react";
-import EditUserPage from "./EditUserPage";
+import EditUser from "./EditUser";
 
 export default function UserAction({ taiKhoan, onSuccess }) {
   const [userEdit, setUserEdit] = useState([]);
@@ -42,7 +42,7 @@ export default function UserAction({ taiKhoan, onSuccess }) {
         Xóa
       </button>
       <div className='' onClick={handleEditUser}>
-        <EditUserPage data={userEdit} />
+        <EditUser data={userEdit} />
       </div>
     </div>
   );

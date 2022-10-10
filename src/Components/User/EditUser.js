@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Modal, Form, Input } from "antd";
-export default function EditUserPage({ data }) {
+import { Button, Modal, Form, Input } from "antd";
+export default function EditUser({ data }) {
+  console.log("data EditUserPage: ", data);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // tạo biến initiavalues
+  let hoTen = data.hoTen;
+  let email = data.email;
+  let soDT = data.soDT;
 
+  // modal setting
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -14,7 +20,13 @@ export default function EditUserPage({ data }) {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
+  // button submit
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <>
       <Button type='danger' onClick={showModal}>
@@ -26,6 +38,8 @@ export default function EditUserPage({ data }) {
         onOk={handleOk}
         onCancel={handleCancel}>
         <Form
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
           className='w-full '
           layout='vertical'
           name='basic'
@@ -50,30 +64,8 @@ export default function EditUserPage({ data }) {
                 message: "Vui lòng nhập vào tên tài khoản!",
               },
             ]}>
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label='Password'
-            name='matKhau'
-            rules={[
-              {
-                required: true,
-                message: "Vui lòng nhập vào Password!",
-              },
-            ]}>
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            label='Nhập lại Password '
-            name='matKhauCheck'
-            rules={[
-              {
-                required: true,
-                message: "Vui lòng nhập lại Password!",
-              },
-            ]}>
-            <Input.Password />
+            {" "}
+            <Input placeholder={data.taiKhoan} disabled={true} />
           </Form.Item>
 
           <Form.Item
@@ -85,7 +77,7 @@ export default function EditUserPage({ data }) {
                 message: "Vui lòng nhập vào họ tên!",
               },
             ]}>
-            <Input />
+            <Input placeholder={hoTen} />
           </Form.Item>
 
           <Form.Item
@@ -97,7 +89,7 @@ export default function EditUserPage({ data }) {
                 message: "Vui lòng nhập vào email!",
               },
             ]}>
-            <Input />
+            <Input placeholder={email} />
           </Form.Item>
           <Form.Item
             label='Số điện thoại'
@@ -108,7 +100,16 @@ export default function EditUserPage({ data }) {
                 message: "Vui lòng nhập vào số điện thoại!",
               },
             ]}>
-            <Input />
+            <Input placeholder={soDT} />
+          </Form.Item>
+          <Form.Item
+            wrapperCol={{
+              offset: 10,
+              span: 24,
+            }}>
+            <Button type='primary' htmlType='submit'>
+              Cập nhật
+            </Button>
           </Form.Item>
         </Form>
       </Modal>
