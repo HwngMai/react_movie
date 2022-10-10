@@ -1,33 +1,49 @@
 import { message } from "antd";
 import React from "react";
 import { userServ } from "../../Services/userServies";
+import { useState } from "react";
+import EditUserPage from "./EditUserPage";
 
 export default function UserAction({ taiKhoan, onSuccess }) {
+  const [userEdit, setUserEdit] = useState([]);
   // hàm xóa user
   let handleDeleteUser = () => {
     userServ
       .deleteUser(taiKhoan)
       .then((res) => {
         console.log(res);
-        message.success("Xóa User thành công");
+        message.success("Xóa User thành công!");
         // gọi lại callback onSuccess
         onSuccess();
       })
       .catch((err) => {
         console.log(err);
-        message.error("Không thể xóa User");
+        message.error("User đã đặt vé, Không thể xóa User!");
       });
   };
+  let handleEditUser = () => {
+    userServ
+      .postUserInfo(taiKhoan)
+      .then((res) => {
+        console.log("data user edit: ", res);
+        setUserEdit(res.data.content);
+        // hiển thị thông tin user lên input
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div>
+    <div className=' flex'>
       <button
-        className='bg-red-500 hover:bg-red-700 bg-transparent hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded mx-1'
+        className='bg-red-500 hover:bg-red-700 bg-transparent hover:text-white px-4 border border-red-500 hover:border-transparent h-8 rounded-sm mx-1'
         onClick={handleDeleteUser}>
         Xóa
       </button>
-      <button className='bg-yellow-500 hover:bg-yellow-700 bg-transparent hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded mx-1'>
-        Sửa
-      </button>
+      <div className='' onClick={handleEditUser}>
+        <EditUserPage data={userEdit} />
+      </div>
     </div>
   );
 }

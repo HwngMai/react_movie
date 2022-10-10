@@ -42,6 +42,7 @@ export const userServ = {
       }`,
     });
   },
+  // lấy dữ liệu thông tin user đăng ký:
   postRegis: (dataRegis) => {
     return axios({
       url: `${BASE_URL}/api/QuanLyNguoiDung/ThemNguoiDung`,
@@ -55,6 +56,7 @@ export const userServ = {
       },
     });
   },
+  // lấy dữ liệu thông tin user bất kỳ:
   postUserInfo: (taiKhoan) => {
     return axios({
       url: `${BASE_URL}/api/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`,
