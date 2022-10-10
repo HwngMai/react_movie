@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Input } from "antd";
+import { useDispatch } from "react-redux";
+import { Button, Modal, Form, Input, message } from "antd";
+import { setUserEditActionServ } from "../../Redux/actions/actionUsers";
 export default function EditUser({ data }) {
   console.log("data EditUserPage: ", data);
+  // tạo dispatch để sử dụng redux
+  let dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   // tạo biến initiavalues
   let hoTen = data.hoTen;
@@ -23,6 +27,21 @@ export default function EditUser({ data }) {
   // button submit
   const onFinish = (values) => {
     console.log("Success:", values);
+
+    //tạo dataEdit bằng mảng lấy từ value, thêm các key
+    let dataPlus = { maNhom: "GP04", maLoaiNguoiDung: "khachHang" };
+    let dataEdit = { ...values, ...dataPlus };
+    console.log("dataEdit: ", dataEdit);
+    // tạo 2 func callBack: onSuccess, onFail cho setUserRegisActionServ
+    let onSuccess = () => {
+      // hiện thị message
+      message.success("Cập nhật thành công!");
+    };
+    let onFail = () => {
+      message.error("Cập nhật thất bại");
+    };
+    // // dispatch value sử dụng action từ actionUser kèm 2 callback func lên action
+    dispatch(setUserEditActionServ(dataEdit, onSuccess, onFail));
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -55,15 +74,7 @@ export default function EditUser({ data }) {
             }
           }
           autoComplete='off'>
-          <Form.Item
-            label='Tên tài khoản'
-            name='taiKhoan'
-            rules={[
-              {
-                required: true,
-                message: "Vui lòng nhập vào tên tài khoản!",
-              },
-            ]}>
+          <Form.Item label='Tên tài khoản' name='taiKhoan'>
             {" "}
             <Input placeholder={data.taiKhoan} disabled={true} />
           </Form.Item>

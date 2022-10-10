@@ -65,3 +65,27 @@ export const setUserRegisActionServ = (
       });
   };
 };
+export const setUserEditActionServ = (
+  dataEdit,
+  onRegisSuccess,
+  onRegisFail
+) => {
+  return (dispatch) => {
+    // gọi api
+    userServ
+      .postRegis(dataEdit)
+      //
+      .then((res) => {
+        console.log("data Regis: ", res);
+        // lưu vào USER storage
+        localServ.user.setItemRegis(res.data.content);
+        // dispatch dữ liệu
+        dispatch(setUserRegisSuccess(res.data.content));
+        onRegisSuccess();
+      })
+      .catch((err) => {
+        console.log(err);
+        onRegisFail();
+      });
+  };
+};
