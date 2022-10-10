@@ -26,11 +26,11 @@ export default function Header() {
             </span>
           </Link>
 
-          <Link to='/detail'>
+          {/* <Link to='/detail'>
             <span className='text-base underline text-red-500 hover:text-black transition duration-300'>
               THÔNG TIN
             </span>
-          </Link>
+          </Link> */}
         </div>
         <UserNav />
       </div>
