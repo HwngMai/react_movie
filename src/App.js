@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
-import "antd/dist/antd.min.css";
+import "antd/dist/antd.css";
 import DetailMovie from "./Pages/DetailPage/DetailMovie";
 import Layout from "./Layout/Layout";
 import Spinner from "./Components/Spinner/Spinner";

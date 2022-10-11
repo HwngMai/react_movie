@@ -53,7 +53,8 @@ export default function EditUser({ data }) {
         title={`Thay đổi thông tin người dùng: ${data.hoTen}`}
         open={isModalOpen}
         onOk={handleOk}
-        onCancel={handleCancel}>
+        onCancel={handleCancel}
+        className='modalEdit_2'>
         <Form
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}

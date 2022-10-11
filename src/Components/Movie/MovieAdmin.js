@@ -4,6 +4,7 @@ import { useState } from "react";
 import MovieAction from "./MovieAction";
 import MovieTable from "./MovieTable";
 import { moviesServ } from "../../Services/moviesServices";
+import AddMovie from "./AddMovie";
 export default function MovieAdmin() {
   //setState bằng useState
   const [moviesList, setMoviesList] = useState([]);
@@ -42,7 +43,7 @@ export default function MovieAdmin() {
   }, []);
   return (
     <div className='container mx-auto'>
-
+      <AddMovie />
       <MovieTable moviesList={moviesList} />
     </div>
   );

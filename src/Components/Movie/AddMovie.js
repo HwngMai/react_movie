@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Button, Modal, DatePicker, Rate, Form, Input, message } from "antd";
-import { setUserEditActionServ } from "../../Redux/actions/actionUsers";
+import React from "react";
+import {
+  Button,
+  Select,
+  Modal,
+  DatePicker,
+  Rate,
+  Form,
+  Input,
+  message,
+} from "antd";
 import TextArea from "antd/lib/input/TextArea";
-export default function EditUser({ data }) {
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+const AddMovie = () => {
   // tạo dispatch để sử dụng redux
   let dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   // tạo biến initiavalues
-  let tenPhim = data.tenPhim;
-  let hinhAnh = data.hinhAnh;
-  let maNhom = data.maNhom;
-  let moTa = data.moTa;
-  let ngayKhoiChieu = data.ngayKhoiChieu;
-  let danhGia = data.danhGia * 1;
-  // modal setting
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -40,9 +43,8 @@ export default function EditUser({ data }) {
   const onFinish = (values) => {
     console.log("Success:", values);
     //tạo dataEdit bằng mảng lấy từ value, thêm các key
-    let dataPlus = { maNhom: "GP04", maLoaiNguoiDung: "khachHang" };
-    let dataEdit = { ...values, ...dataPlus };
-    console.log("dataEdit: ", dataEdit);
+    // let dataPlus = { maNhom: "GP04", maLoaiNguoiDung: "khachHang" };
+    // let dataEdit = { ...values, ...dataPlus };
     // tạo 2 func callBack: onSuccess, onFail cho setUserRegisActionServ
     let onSuccess = () => {
       // hiện thị message
@@ -52,23 +54,27 @@ export default function EditUser({ data }) {
       message.error("Cập nhật thất bại");
     };
     // // dispatch value sử dụng action từ actionUser kèm 2 callback func lên action
-    dispatch(setUserEditActionServ(dataEdit, onSuccess, onFail));
+    // dispatch(setUserEditActionServ(dataEdit, onSuccess, onFail));
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
-    <div>
-      <Button type='danger' onClick={showModal}>
-        Sửa
+    <div className='mb-5'>
+      <Button type='primary' onClick={showModal}>
+        Thêm Phim
       </Button>
       <Modal
-        width={700}
-        title={`Thay đổi thông tin phim: ${data.tenPhim}`}
+        width={900}
+        title='Thêm phim'
         open={isModalOpen}
         onOk={handleOk}
-        onCancel={handleCancel}>
+        onCancel={handleCancel}
+        className='modalEdit'>
+
         <Form
+
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           className='w-full '
@@ -86,21 +92,33 @@ export default function EditUser({ data }) {
           }
           autoComplete='off'>
           <Form.Item label='Tên Phim' disabled={true}>
-            <Input placeholder={tenPhim} />
+            <Input
+              placeholder='Tên phim'
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng nhập vào tên phim",
+                },
+              ]}
+            />
           </Form.Item>
           <Form.Item label='Ngày khởi chiếu' {...config}>
             <DatePicker
-                onFieldsChange={(ngayKhoiChieu) => {
-                  console.log("ngayKhoiChieu: ", ngayKhoiChieu);
-                }}
+              onFieldsChange={(ngayKhoiChieu) => {
+                console.log("ngayKhoiChieu: ", ngayKhoiChieu);
+              }}
               showTime
               format='YYYY-MM-DD HH:mm:ss'
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng chọn ngày khởi chiếu",
+                },
+              ]}
             />
           </Form.Item>
           <Form.Item label='Đánh giá'>
             <Rate
-              allowClear={false}
-              value={danhGia}
               count={10}
               onChange={(value) => {
                 console.log("value: ", value);
@@ -112,10 +130,20 @@ export default function EditUser({ data }) {
             rules={[
               {
                 required: true,
-                message: "Vui lòng nhập vào url hình ảnh!",
+                message: "Vui lòng nhập vào url Poster phim!",
               },
             ]}>
-            <Input placeholder={hinhAnh} />
+            <Input placeholder='Url poster' />
+          </Form.Item>
+          <Form.Item
+            label='Trailer'
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào url Trailer",
+              },
+            ]}>
+            <Input placeholder='Url trailer phim' />
           </Form.Item>
           <Form.Item
             label='Mô tả'
@@ -125,19 +153,27 @@ export default function EditUser({ data }) {
                 message: "Vui lòng nhập vào Mô tả!",
               },
             ]}>
-            <TextArea placeholder={moTa} maxLength={6} />
+            <TextArea placeholder='Mô tả phim' maxLength={6} />
+          </Form.Item>
+          <Form.Item label='Tình trạng'>
+            <Select placeholder='Chọn tình trạng của phim'>
+              <Select.Option value='dangChieu'>Đang chiếu</Select.Option>
+              <Select.Option value='sapChieu'>Sắp chiếu</Select.Option>
+            </Select>
           </Form.Item>
           <Form.Item
             wrapperCol={{
-              offset: 10,
+              offset: 11,
               span: 24,
             }}>
             <Button type='primary' htmlType='submit'>
-              Cập nhật
+              Thêm phim
             </Button>
           </Form.Item>
         </Form>
       </Modal>
     </div>
   );
-}
+};
+
+export default AddMovie;
