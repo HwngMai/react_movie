@@ -11,7 +11,7 @@ import {
   setLoadingOffAction,
 } from "../../Redux/actions/actionSpinner";
 import UserAdmin from "../../Components/User/UserAdmin";
-import MovieAdmin from "../../Components/User/MovieAdmin";
+import MovieAdmin from "../../Components/Movie/MovieAdmin";
 const UserPage = () => {
   // lấy giá trị user từ localstore
   let userData = useSelector((state) => {

@@ -71,7 +71,7 @@ export const userServ = {
     });
   },
   // cập nhật user
-  putUser: (userEdit) => {
+  putEditUser: (userEdit) => {
     return axios({
       url: `${BASE_URL}/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
       method: "PUT",

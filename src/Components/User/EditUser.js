@@ -27,7 +27,6 @@ export default function EditUser({ data }) {
   // button submit
   const onFinish = (values) => {
     console.log("Success:", values);
-
     //tạo dataEdit bằng mảng lấy từ value, thêm các key
     let dataPlus = { maNhom: "GP04", maLoaiNguoiDung: "khachHang" };
     let dataEdit = { ...values, ...dataPlus };
