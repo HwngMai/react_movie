@@ -3,7 +3,6 @@ import { Card } from "antd";
 const { Meta } = Card;
 export default function UserRev({ userInfo }) {
   let userRev = userInfo.thongTinDatVe;
-  console.log("userRev: ", userRev);
   let renderContent = () => {
     return userRev?.map((suatChieu, index) => {
       return (

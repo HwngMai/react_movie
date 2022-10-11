@@ -38,4 +38,9 @@ export const moviesServ = {
     // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
     return https.get(uri);
   },
+  delete: (maPhim) => {
+    let uri = `api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`;
+    // truyền uri cho axios.create tạo từ biến https bằng cú pháp https.get(uri) => hoàn thành cú pháp axios
+    return https.delete(uri);
+  },
 };

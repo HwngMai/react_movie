@@ -25,12 +25,11 @@ export default function MovieAdmin() {
                   //callback lại fetchMovieList khi UserAction render lại thành công (onSuccess)
                   onSuccess={fetchMovieList}
                   // onSuccess={fetchMovieList()}
-                  movies={item.maPhim}
+                  maPhim={item.maPhim}
                 />
               ),
             };
           });
-          console.log("Data users List:", res);
           // lấy data MovieList lưu về state
           setMoviesList(dataRemake);
         })
@@ -43,6 +42,7 @@ export default function MovieAdmin() {
   }, []);
   return (
     <div className='container mx-auto'>
+
       <MovieTable moviesList={moviesList} />
     </div>
   );

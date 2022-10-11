@@ -19,7 +19,7 @@ export default function TabsMovies() {
   let renderContent = () => {
     return dataMovies?.map((heThongRap, index) => {
       return (
-        <Tabs.TabPane
+        <Tabs.TabPane 
           tab={<img className='w-16 h-16' src={heThongRap.logo} />}
           key={index}>
           <Tabs style={{ height: 500 }} tabPosition='left'>

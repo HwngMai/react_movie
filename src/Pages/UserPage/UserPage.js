@@ -19,7 +19,6 @@ const UserPage = () => {
   });
   //1. lấy id bằng cú pháp useParam()
   const user = useParams();
-  console.log("taiKhoan: ", user.taiKhoan);
   //2. setState = useState
   const [userInfo, setUserInfo] = useState([]);
   // Tạo biến useDispatch gửi giá trị thay đổi(action) cho isLoading lên store
@@ -32,7 +31,6 @@ const UserPage = () => {
     userServ
       .postUserInfo(user.taiKhoan)
       .then((res) => {
-        console.log("thong tin tai khoan: ", res);
         // setState cho movieSche bằng data gọi về từ api
         setUserInfo(res.data.content);
         // dispatch set isLoading = off

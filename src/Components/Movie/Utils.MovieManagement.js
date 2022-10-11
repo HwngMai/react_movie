@@ -1,3 +1,4 @@
+
 export const headColumns = [
   {
     title: "Tên Phim",
@@ -9,7 +10,7 @@ export const headColumns = [
     dataIndex: "hinhAnh",
     key: "hinhAnh",
     render: (hinhAnh) => {
-      return <img src={hinhAnh}></img>;
+      return <img style={{}} src={hinhAnh}></img>;
     },
   },
   {

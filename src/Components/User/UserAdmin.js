@@ -30,7 +30,6 @@ export default function UserAdmin() {
               ),
             };
           });
-          console.log("Data users List:", res);
           // lấy data userList lưu về state
           setUsersList(dataRemake);
         })
