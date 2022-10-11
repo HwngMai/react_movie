@@ -39,7 +39,7 @@ export default function MovieAction({ maPhim, onSuccess }) {
   return (
     <div className=' flex'>
       <button
-        className='bg-red-500 hover:bg-red-700 bg-transparent hover:text-white px-4 border border-red-500 hover:border-transparent h-8 rounded-sm mx-1'
+        className=' hover:bg-red-700 bg-transparent hover:text-white px-4 border border-red-500 hover:border-transparent h-8 rounded-sm mx-1'
         onClick={handleDeleteUser}>
         Xóa
       </button>

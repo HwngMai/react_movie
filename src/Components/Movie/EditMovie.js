@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Button, Modal, Rate, Form, Input, message } from "antd";
+import { Button, Modal, DatePicker, Rate, Form, Input, message } from "antd";
 import { setUserEditActionServ } from "../../Redux/actions/actionUsers";
 import TextArea from "antd/lib/input/TextArea";
 export default function EditUser({ data }) {
@@ -25,6 +25,16 @@ export default function EditUser({ data }) {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+  //config date picker
+  const config = {
+    rules: [
+      {
+        type: "object",
+        required: true,
+        message: "Please select time!",
+      },
+    ],
   };
   // button submit
   const onFinish = (values) => {
@@ -63,7 +73,6 @@ export default function EditUser({ data }) {
           onFinishFailed={onFinishFailed}
           className='w-full '
           layout='vertical'
-
           labelCol={{
             span: 8,
           }}
@@ -76,14 +85,16 @@ export default function EditUser({ data }) {
             }
           }
           autoComplete='off'>
-          <Form.Item label='Tên Phim'  disabled={true}>
+          <Form.Item label='Tên Phim' disabled={true}>
             <Input placeholder={tenPhim} />
           </Form.Item>
-          <Form.Item label='Ngày khởi chiếu'>
-            {" "}
-            <Input
-              placeholder={ngayKhoiChieu}
-              //  disabled={true}
+          <Form.Item label='Ngày khởi chiếu' {...config}>
+            <DatePicker
+                onFieldsChange={(ngayKhoiChieu) => {
+                  console.log("ngayKhoiChieu: ", ngayKhoiChieu);
+                }}
+              showTime
+              format='YYYY-MM-DD HH:mm:ss'
             />
           </Form.Item>
           <Form.Item label='Đánh giá'>
@@ -98,7 +109,6 @@ export default function EditUser({ data }) {
           </Form.Item>
           <Form.Item
             label='Hình Ảnh'
-
             rules={[
               {
                 required: true,
@@ -109,7 +119,6 @@ export default function EditUser({ data }) {
           </Form.Item>
           <Form.Item
             label='Mô tả'
-
             rules={[
               {
                 required: true,
