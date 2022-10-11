@@ -32,7 +32,7 @@ export default function Regis() {
         }, 2000);
       };
       let onFail = () => {
-        message.error("Đăng ký thất bại");
+        message.error("Đăng ký thất bại!");
       };
       // // dispatch value sử dụng action từ actionUser kèm 2 callback func lên action
       dispatch(setUserRegisActionServ(dataRegis, onSuccess, onFail));
