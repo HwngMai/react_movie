@@ -8,7 +8,7 @@ import { moviesServ } from "../../Services/moviesServices";
 export default function MovieAction({ maPhim, onSuccess }) {
   const [movieEdit, setMovieEdit] = useState([]);
   // hàm xóa user
-  let handleDeleteUser = () => {
+  let handleDeleteMovie = () => {
     console.log("maPhim: ", maPhim);
     moviesServ
       .deleteMovie(maPhim)
@@ -23,11 +23,10 @@ export default function MovieAction({ maPhim, onSuccess }) {
         message.error("Đã có user đã đặt vé, Không thể xóa Phim!");
       });
   };
-  let handleEditUser = () => {
+  let handleEditMovie = () => {
     moviesServ
       .getDetailMovie(maPhim)
       .then((res) => {
-        console.log("data movie edit: ", res);
         setMovieEdit(res.data.content);
         // hiển thị thông tin user lên input
       })
@@ -40,10 +39,10 @@ export default function MovieAction({ maPhim, onSuccess }) {
     <div className=' flex'>
       <button
         className=' hover:bg-red-700 bg-transparent hover:text-white px-4 border border-red-500 hover:border-transparent h-8 rounded-sm mx-1'
-        onClick={handleDeleteUser}>
+        onClick={handleDeleteMovie}>
         Xóa
       </button>
-      <div className='' onClick={handleEditUser}>
+      <div className='' onClick={handleEditMovie}>
         <EditMovie data={movieEdit} />
       </div>
     </div>
