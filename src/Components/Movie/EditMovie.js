@@ -90,9 +90,9 @@ export default function EditUser({ data }) {
           </Form.Item>
           <Form.Item label='Ngày khởi chiếu' {...config}>
             <DatePicker
-                onFieldsChange={(ngayKhoiChieu) => {
-                  console.log("ngayKhoiChieu: ", ngayKhoiChieu);
-                }}
+              onFieldsChange={(ngayKhoiChieu) => {
+                console.log("ngayKhoiChieu: ", ngayKhoiChieu);
+              }}
               showTime
               format='YYYY-MM-DD HH:mm:ss'
             />
@@ -125,7 +125,7 @@ export default function EditUser({ data }) {
                 message: "Vui lòng nhập vào Mô tả!",
               },
             ]}>
-            <TextArea placeholder={moTa} maxLength={6} />
+            <TextArea placeholder={moTa} maxLength={60000} />
           </Form.Item>
           <Form.Item
             wrapperCol={{
