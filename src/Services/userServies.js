@@ -1,6 +1,6 @@
 import axios from "axios";
 import { localServ } from "./localServices";
-import { https } from "./configURL";
+import { https, https2 } from "./configURL";
 import { BASE_URL, TOKEN_CYBERSOFT } from "./configURL";
 export const userServ = {
   // lấy đata user
@@ -18,9 +18,10 @@ export const userServ = {
   getUserList: () => {
     return axios({
       // config url - bổ sung maNhom từ data localStorage trong localServ lưu về được từ việc gọi api trước đó
-      url: `${BASE_URL}/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${
-        localServ.user.get()?.maNhom
-      }`,
+      url: `${BASE_URL}/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP00`,
+      // ${
+      //   localServ.user.get()?.maNhom
+      // }`
       method: "GET",
       headers: {
         TokenCybersoft: TOKEN_CYBERSOFT,
@@ -29,7 +30,7 @@ export const userServ = {
   },
   // xóa người dùng
   deleteUser: (taiKhoan) => {
-    return https.delete(
+    return https2.delete(
       `api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
     );
   },

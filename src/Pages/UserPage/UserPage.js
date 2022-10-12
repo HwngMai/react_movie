@@ -42,7 +42,7 @@ const UserPage = () => {
         dispatch(setLoadingOffAction());
       });
   }, []);
-  if (userData.maLoaiNguoiDung == "khachHang") {
+  if (userData.maLoaiNguoiDung == "khachHang" || userData.maLoaiNguoiDung == 'KhachHang') {
     return (
       <div className='container mx-auto h-4/5 '>
         <Tabs defaultActiveKey='1'>

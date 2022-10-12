@@ -27,10 +27,10 @@ export default function UserNav() {
     if (user) {
       return (
         <div className='flex item-center justify-center gap-3 '>
-          <div className='rounded border flex justify-center flex-row items-center hover:bg-red-600 transition duration-300'>
+          <div className='rounded border flex justify-center flex-row items-center bg-red-300 hover:bg-red-600 transition duration-300'>
             <NavLink to={`/user/${user.taiKhoan}`}>
               {" "}
-              <span className='mx-4 my-auto underline text-bold text-black '>
+              <span className='mx-4 my-auto underline text-bold text-black hover:text-white transition duration-300'>
                 {" "}
                 {user.taiKhoan}
               </span>

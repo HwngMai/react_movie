@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import { Descriptions } from "antd";
 export default function UserInfo({ userInfo }) {
   let renderLoaiNguoiDung = (loaiNguoiDung) => {
-    if (loaiNguoiDung == "khachHang") {
+    if (loaiNguoiDung == "khachHang" || loaiNguoiDung == "KhachHang") {
       return "Khách Hàng";
     } else {
       return "Admin";

@@ -1,4 +1,6 @@
 import React from "react";
+import { customAlphabet } from "nanoid";
+import { PlusOutlined } from "@ant-design/icons";
 import {
   Button,
   Select,
@@ -8,16 +10,18 @@ import {
   Form,
   Input,
   message,
+  Upload,
 } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-const AddMovie = () => {
+import { moviesServ } from "../../Services/moviesServices";
+const AddMovie = ({}) => {
   // tạo dispatch để sử dụng redux
   let dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   // tạo biến initiavalues
-
+  // modal setting
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -39,21 +43,39 @@ const AddMovie = () => {
       },
     ],
   };
-  // button submit
+  // form setting
   const onFinish = (values) => {
     console.log("Success:", values);
     //tạo dataEdit bằng mảng lấy từ value, thêm các key
-    // let dataPlus = { maNhom: "GP04", maLoaiNguoiDung: "khachHang" };
-    // let dataEdit = { ...values, ...dataPlus };
-    // tạo 2 func callBack: onSuccess, onFail cho setUserRegisActionServ
-    let onSuccess = () => {
-      // hiện thị message
-      message.success("Cập nhật thành công!");
+    // tạo id cho phim bằng nanoid
+    const nanoid = customAlphabet("1234567890", 6);
+    let maPhim = nanoid();
+    console.log("maPhim: ", maPhim);
+    let dataPlus = { maNhom: "GP03", maPhim: maPhim };
+    let dataEdit = { ...values, ...dataPlus };
+    console.log("dataEdit: ", dataEdit);
+    let handleAddMovie = () => {
+      moviesServ
+        .addMovie(dataEdit)
+        .then((res) => {
+          console.log(res);
+          message.success("Thêm phim thành công!");
+        })
+        .catch((err) => {
+          console.log(err);
+          message.error("Không thể thêm phim!");
+        });
     };
-    let onFail = () => {
-      message.error("Cập nhật thất bại");
-    };
-    // // dispatch value sử dụng action từ actionUser kèm 2 callback func lên action
+    handleAddMovie();
+    // tạo 2 func callBack: onSuccess, onFail cho setMovieEditActionServ
+    // let onSuccess = () => {
+    //   // hiện thị message
+    //   message.success("Cập nhật thành công!");
+    // };
+    // let onFail = () => {
+    //   message.error("Cập nhật thất bại");
+    // };
+    // // dispatch value sử dụng action từ actionMovie kèm 2 callback func lên action
     // dispatch(setUserEditActionServ(dataEdit, onSuccess, onFail));
   };
   const onFinishFailed = (errorInfo) => {
@@ -72,9 +94,7 @@ const AddMovie = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         className='modalEdit'>
-
         <Form
-
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           className='w-full '
@@ -91,7 +111,7 @@ const AddMovie = () => {
             }
           }
           autoComplete='off'>
-          <Form.Item label='Tên Phim' disabled={true}>
+          <Form.Item label='Tên Phim' name='tenPhim' disabled={true}>
             <Input
               placeholder='Tên phim'
               rules={[
@@ -102,7 +122,7 @@ const AddMovie = () => {
               ]}
             />
           </Form.Item>
-          <Form.Item label='Ngày khởi chiếu' {...config}>
+          <Form.Item label='Ngày khởi chiếu' name='ngayKhoiChieu' {...config}>
             <DatePicker
               onFieldsChange={(ngayKhoiChieu) => {
                 console.log("ngayKhoiChieu: ", ngayKhoiChieu);
@@ -117,7 +137,7 @@ const AddMovie = () => {
               ]}
             />
           </Form.Item>
-          <Form.Item label='Đánh giá'>
+          <Form.Item label='Đánh giá' name='danhGia'>
             <Rate
               count={10}
               onChange={(value) => {
@@ -125,7 +145,9 @@ const AddMovie = () => {
               }}
             />
           </Form.Item>
+          {/* Hình ảnh */}
           <Form.Item
+            name='hinhAnh'
             label='Hình Ảnh'
             rules={[
               {
@@ -137,6 +159,7 @@ const AddMovie = () => {
           </Form.Item>
           <Form.Item
             label='Trailer'
+            name='trailer'
             rules={[
               {
                 required: true,
@@ -146,6 +169,7 @@ const AddMovie = () => {
             <Input placeholder='Url trailer phim' />
           </Form.Item>
           <Form.Item
+            name='moTa'
             label='Mô tả'
             rules={[
               {
@@ -153,13 +177,17 @@ const AddMovie = () => {
                 message: "Vui lòng nhập vào Mô tả!",
               },
             ]}>
-            <TextArea placeholder='Mô tả phim' maxLength={6} />
+            <TextArea placeholder='Mô tả phim' maxLength={6000} />
           </Form.Item>
-          <Form.Item label='Tình trạng'>
+          <Form.Item label='Tình trạng' name='tinhTrang'>
             <Select placeholder='Chọn tình trạng của phim'>
               <Select.Option value='dangChieu'>Đang chiếu</Select.Option>
               <Select.Option value='sapChieu'>Sắp chiếu</Select.Option>
             </Select>
+          </Form.Item>
+          {/* upload hình ảnh*/}
+          <Form.Item name='hinhAnh' label='Upload'>
+            <input type='file' />
           </Form.Item>
           <Form.Item
             wrapperCol={{
