@@ -14,8 +14,8 @@ export default function UserRev({ userInfo }) {
               hoverable
               style={{
                 overflow: "clip",
-                width: "200px",
-                height: "750px",
+                width: "300px",
+                height: "850px",
               }}
               cover={
                 <img
@@ -54,5 +54,5 @@ export default function UserRev({ userInfo }) {
       });
     }
   };
-  return <div className='grid grid-cols-5 gap-5'>{renderContent()}</div>;
+  return <div className='grid grid-cols-4 gap-5'>{renderContent()}</div>;
 }

@@ -49,7 +49,7 @@ export default function UserNav() {
       // hiển thị nút đăng nhập và đăng kí
       return (
         <>
-          <div className='space-x-5 mx-5'>
+          <div className='space-x-5'>
             <NavLink to='/login'>
               <button className='border rounded transition bg-red-500 hover:border-red-800 hover:bg-white border-white shadow-lg text-black px-5 py-2 hover:text-red-500'>
                 {" "}
