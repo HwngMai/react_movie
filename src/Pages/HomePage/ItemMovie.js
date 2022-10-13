@@ -13,6 +13,7 @@ export default function ItemMovie({ data }) {
         hoverable
         style={{
           width: "100%",
+          borderColor: "red",
         }}
         cover={
           <img

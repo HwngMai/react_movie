@@ -12,7 +12,7 @@ export default function Layout({ Component }) {
       <div className='pt-20 -z-10 w-full'>
         <Component />
       </div>
-      <div className='pt-20 -z-10 w-full'>
+      <div className='pt-10 -z-10 w-full'>
         <Footer />
       </div>
     </div>

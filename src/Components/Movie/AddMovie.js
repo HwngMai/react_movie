@@ -1,6 +1,5 @@
 import React from "react";
 import { customAlphabet } from "nanoid";
-import { PlusOutlined } from "@ant-design/icons";
 import {
   Button,
   Select,
@@ -10,7 +9,6 @@ import {
   Form,
   Input,
   message,
-  Upload,
 } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { useDispatch } from "react-redux";
@@ -111,7 +109,7 @@ const AddMovie = ({}) => {
             }
           }
           autoComplete='off'>
-          <Form.Item label='Tên Phim' name='tenPhim' disabled={true}>
+          <Form.Item label='Tên Phim' name='tenPhim'>
             <Input
               placeholder='Tên phim'
               rules={[

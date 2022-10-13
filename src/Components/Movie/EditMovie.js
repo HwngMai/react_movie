@@ -7,13 +7,15 @@ export default function EditUser({ data }) {
   // tạo dispatch để sử dụng redux
   let dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  let danhGia = data.danhGia * 1;
+  const [rate, setRate] = useState(danhGia);
+  console.log("rate: ", rate);
   // tạo biến initiavalues
   let tenPhim = data.tenPhim;
   let hinhAnh = data.hinhAnh;
   let maNhom = data.maNhom;
   let moTa = data.moTa;
   let ngayKhoiChieu = data.ngayKhoiChieu;
-  let danhGia = data.danhGia * 1;
   // modal setting
   const showModal = () => {
     setIsModalOpen(true);
@@ -100,10 +102,11 @@ export default function EditUser({ data }) {
           <Form.Item label='Đánh giá'>
             <Rate
               allowClear={false}
-              value={danhGia}
+              value={rate}
               count={10}
               onChange={(value) => {
-                console.log("value: ", value);
+                console.log("rate: ", value);
+                setRate(value);
               }}
             />
           </Form.Item>
