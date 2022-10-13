@@ -7,9 +7,9 @@ export default function EditUser({ data }) {
   // tạo dispatch để sử dụng redux
   let dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  let danhGia = data.danhGia * 1;
-  const [rate, setRate] = useState(danhGia);
-  console.log("rate: ", rate);
+  const [danhGia, setDanhGia] = useState(Number(data.danhGia));
+  // const [rate, setRate] = useState(Number(danhGia));
+  // console.log("rate state: ", rate);
   // tạo biến initiavalues
   let tenPhim = data.tenPhim;
   let hinhAnh = data.hinhAnh;
@@ -20,11 +20,9 @@ export default function EditUser({ data }) {
   const showModal = () => {
     setIsModalOpen(true);
   };
-
   const handleOk = () => {
     setIsModalOpen(false);
   };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -92,6 +90,7 @@ export default function EditUser({ data }) {
           </Form.Item>
           <Form.Item label='Ngày khởi chiếu' {...config}>
             <DatePicker
+              initialValues={ngayKhoiChieu}
               onFieldsChange={(ngayKhoiChieu) => {
                 console.log("ngayKhoiChieu: ", ngayKhoiChieu);
               }}
@@ -101,12 +100,13 @@ export default function EditUser({ data }) {
           </Form.Item>
           <Form.Item label='Đánh giá'>
             <Rate
+              initialValues={danhGia}
+              defaultValue={danhGia}
               allowClear={false}
-              value={rate}
+              value={danhGia}
               count={10}
               onChange={(value) => {
-                console.log("rate: ", value);
-                setRate(value);
+                setDanhGia(value);
               }}
             />
           </Form.Item>

@@ -30,7 +30,7 @@ export const userServ = {
   },
   // xóa người dùng
   deleteUser: (taiKhoan) => {
-    return https2.delete(
+    return https.delete(
       `api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
     );
   },
