@@ -30,9 +30,17 @@ export const userServ = {
   },
   // xóa người dùng
   deleteUser: (taiKhoan) => {
-    return https.delete(
-      `api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
-    );
+    return axios({
+      url: `${BASE_URL}/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+      method: "DELETE",
+      taiKhoan: taiKhoan,
+      headers: {
+        TokenCybersoft: TOKEN_CYBERSOFT,
+        Authorization:
+          "bearer " +
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTIzNDU2IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiaG90YW5waGF0QGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6WyJRdWFuVHJpIiwiaG90YW5waGF0QGdtYWlsLmNvbSIsIkdQMDQiXSwibmJmIjoxNjY1MDM2MjAxLCJleHAiOjE2NjUwMzk4MDF9.pWnIXF0ddgYanp8Qion49xM-k7APHrS2RQDZZnFAT-c",
+      },
+    });
   },
   // lấy dữ liệu thông tin user đăng nhập:
   getUser: () => {

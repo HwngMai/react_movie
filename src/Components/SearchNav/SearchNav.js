@@ -55,7 +55,7 @@ export default function SearchNav() {
   return (
     <div
       style={{ width: 900 }}
-      className='w-auto h-20 searchBar border rounded-lg shadow-lg mb-5 flex justify-center mx-auto items-center border-red-500'>
+      className='searchBar hover:shadow-xl w-auto h-16  border rounded-lg shadow-lg mb-5 flex justify-center mx-auto items-center border-red-500'>
       <Space direction='vertical'>
         <Search
           placeholder='Nhập tên phìm cần tìm !'

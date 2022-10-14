@@ -13,9 +13,11 @@ export default function UserRev({ userInfo }) {
             <Card
               hoverable
               style={{
+                borderColor: "red",
                 overflow: "clip",
                 width: "300px",
                 height: "850px",
+                borderRadius: "10px",
               }}
               cover={
                 <img
