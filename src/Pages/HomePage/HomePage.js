@@ -61,7 +61,7 @@ export default function HomePage() {
         DANH SÁCH PHIM
       </p>
 
-      <div className='grid grid-cols-5 gap-4 font-link'>
+      <div className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4 font-link'>
         {renderMoviesCard()}
       </div>
 
